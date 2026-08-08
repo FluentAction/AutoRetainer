@@ -86,7 +86,7 @@ jobs:
           $v = (Select-String -Path "AutoRetainer/AutoRetainer/AutoRetainer.csproj" -Pattern '<Version>(.*?)</Version>').Matches[0].Groups[1].Value
           Write-Output "VERSION=$v" >> $env:GITHUB_ENV
 
-      - name: Create GitHub Release
+      - name: Bump version if tag exists
         if: env.UP_TO_DATE == '0' && env.VERSION != ''
         shell: pwsh
         env:
@@ -94,15 +94,28 @@ jobs:
         run: |
           $tag = "v$env:VERSION"
           gh release view $tag 2>$null
-          if ($LASTEXITCODE -ne 0) {
-            Copy-Item "AutoRetainer/AutoRetainer/bin/Release/AutoRetainer/latest.zip" "AutoRetainer.zip"
-            $notes = "自动同步上游并重放汉化（$env:VERSION）`n`n安装：Dalamud 设置 -> 自定义插件仓库 -> https://raw.githubusercontent.com/$env:PM_REPO/main/pluginmaster.json"
-            gh release create $tag "AutoRetainer.zip" --title "AutoRetainer $env:VERSION 中文汉化版" --notes $notes
-            Write-Output "RELEASED=1" >> $env:GITHUB_ENV
-          } else {
-            Write-Output "tag $tag 已存在，跳过 release"
-            Write-Output "RELEASED=0" >> $env:GITHUB_ENV
+          while ($LASTEXITCODE -eq 0) {
+            # 版本已发布过（上游未 bump），汉化版末位 +1
+            $parts = $env:VERSION.Split('.')
+            $parts[$parts.Count - 1] = ([int]$parts[$parts.Count - 1] + 1).ToString()
+            $env:VERSION = $parts -join '.'
+            Write-Output "版本 bump 为 $env:VERSION"
+            (Get-Content "AutoRetainer/AutoRetainer/AutoRetainer.csproj") -replace '<Version>.*?</Version>', "<Version>$env:VERSION</Version>" | Set-Content "AutoRetainer/AutoRetainer/AutoRetainer.csproj"
+            $tag = "v$env:VERSION"
+            gh release view $tag 2>$null
           }
+          Write-Output "VERSION=$env:VERSION" >> $env:GITHUB_ENV
+
+      - name: Create GitHub Release
+        if: env.UP_TO_DATE == '0' && env.VERSION != ''
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          Copy-Item "AutoRetainer/AutoRetainer/bin/Release/AutoRetainer/latest.zip" "AutoRetainer.zip"
+          $notes = "自动同步上游并重放汉化（$env:VERSION）`n`n安装：Dalamud 设置 -> 自定义插件仓库 -> https://raw.githubusercontent.com/$env:PM_REPO/main/pluginmaster.json"
+          gh release create "v$env:VERSION" "AutoRetainer.zip" --title "AutoRetainer $env:VERSION 中文汉化版" --notes $notes
+          Write-Output "RELEASED=1" >> $env:GITHUB_ENV
 
       - name: Update pluginmaster.json
         if: env.RELEASED == '1' && env.HAS_PAT == 'true'
@@ -113,7 +126,7 @@ jobs:
           git clone "https://x-access-token:$env:PAT@github.com/$env:PM_REPO.git" pmrepo
           $url = "https://gh.atmoomen.top/https://github.com/${{ github.repository }}/releases/download/v$env:VERSION/AutoRetainer.zip"
           $log = git log upstream-master..HEAD --oneline --first-parent | Select-Object -First 20
-          python tools/update_pluginmaster.py pmrepo $env:VERSION $url $log
+          python pmrepo/tools/update_pluginmaster.py pmrepo "AutoRetainer" $env:VERSION $url $log
           Set-Location pmrepo
           git config user.name "exloser123"
           git config user.email "exloser123@users.noreply.github.com"
