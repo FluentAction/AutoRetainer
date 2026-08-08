@@ -12,6 +12,7 @@ permissions:
 env:
   UPSTREAM_REPO: PunishXIV/AutoRetainer
   PM_REPO: exloser123/DalamudPlugins
+  HAS_PAT: ${{ secrets.PLUGIN_MASTER_PAT != '' }}
 
 jobs:
   sync:
@@ -104,7 +105,7 @@ jobs:
           }
 
       - name: Update pluginmaster.json
-        if: env.RELEASED == '1' && secrets.PLUGIN_MASTER_PAT != ''
+        if: env.RELEASED == '1' && env.HAS_PAT == 'true'
         shell: pwsh
         env:
           PAT: ${{ secrets.PLUGIN_MASTER_PAT }}
@@ -122,7 +123,7 @@ jobs:
           Set-Location $env:GITHUB_WORKSPACE
 
       - name: Warn if pluginmaster PAT not configured
-        if: env.RELEASED == '1' && secrets.PLUGIN_MASTER_PAT == ''
+        if: env.RELEASED == '1' && env.HAS_PAT == 'false'
         shell: pwsh
         run: |
           Write-Output "::warning::未配置 PLUGIN_MASTER_PAT secret，pluginmaster.json 未自动更新。请手动更新或配置 PAT。"
