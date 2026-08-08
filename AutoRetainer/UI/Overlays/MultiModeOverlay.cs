@@ -6,7 +6,7 @@ namespace AutoRetainer.UI.Overlays;
 
 internal class MultiModeOverlay : Window
 {
-    public MultiModeOverlay() : base("AutoRetainer Alert", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoFocusOnAppearing | ImGuiWindowFlags.NoSavedSettings | ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoBackground, true)
+    public MultiModeOverlay() : base("AutoRetainer 提醒", ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoFocusOnAppearing | ImGuiWindowFlags.NoSavedSettings | ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoBackground, true)
     {
         P.WindowSystem.AddWindow(this);
         IsOpen = true;
@@ -98,7 +98,7 @@ internal class MultiModeOverlay : Window
                     {
                         SchedulerMain.CharacterPostProcessLocked = false;
                     }
-                    ImGui.SetTooltip("AutoRetainer is in postprocessing. \nLeft click - open AutoRetainer. \nRight click - abort.");
+                    ImGui.SetTooltip("AutoRetainer 正在进行后处理阶段\\n左键点击 - 开启 AutoRetainer\\n右键点击 - 中止");
                 }
             }
             else
@@ -124,7 +124,7 @@ internal class MultiModeOverlay : Window
                     {
                         P.TaskManager.Abort();
                     }
-                    ImGui.SetTooltip("AutoRetainer is processing tasks. \nLeft click - open AutoRetainer. \nRight click - abort.");
+                    ImGui.SetTooltip("AutoRetainer 正在处理任务中\\n左键点击 - 开启 AutoRetainer\\n右键点击 - 中止");
                 }
             }
             else
@@ -146,7 +146,7 @@ internal class MultiModeOverlay : Window
                     {
                         Svc.Commands.ProcessCommand("/ays");
                     }
-                    ImGui.SetTooltip("RetainerSense is active. \nLeft click - open AutoRetainer.");
+                    ImGui.SetTooltip("传唤铃感应已启用\\n左键点击 - 开启 AutoRetainer");
                 }
                 var f = (float)(Environment.TickCount64 - P.LastMovementAt) / (float)C.RetainerSenseThreshold;
                 ImGui.ProgressBar(f, new(128, 10), "");
@@ -175,7 +175,7 @@ internal class MultiModeOverlay : Window
                         MultiMode.Enabled = false;
                         MultiMode.SingleMultiMode = null;
                     }
-                    ImGui.SetTooltip("MultiMode enabled. \nLeft click - open AutoRetainer. \nRight click - disable Multi Mode.");
+                    ImGui.SetTooltip("多角色模式已启用\\n左键点击 - 开启 AutoRetainer\\n右键点击 - 禁用多角色模式。");
                 }
             }
             else
@@ -254,7 +254,7 @@ internal class MultiModeOverlay : Window
                     {
                         VoyageScheduler.Enabled = false;
                     }
-                    ImGui.SetTooltip("Submarine module enabled. \nLeft click - open AutoRetainer. \nRight click - disable submarine module.");
+                    ImGui.SetTooltip("潜水艇模块已启用\\n左键点击 - 开启 AutoRetainer\\n右键点击 - 禁用潜水艇模块");
                 }
             }
             else
@@ -280,7 +280,7 @@ internal class MultiModeOverlay : Window
                     {
                         SchedulerMain.DisablePlugin();
                     }
-                    ImGui.SetTooltip("AutoRetainer enabled. \nLeft click - open AutoRetainer. \nRight click - disable AutoRetainer.");
+                    ImGui.SetTooltip("AutoRetainer 已启用\\n左键点击 - 开启 AutoRetainer\\n右键点击 - 禁用 AutoRetainer");
                 }
             }
             else
@@ -307,7 +307,7 @@ internal class MultiModeOverlay : Window
                     {
                         NotificationHandler.IsHidden = true;
                     }
-                    ImGui.SetTooltip("Some retainers completed their ventures. \nLeft click - open AutoRetainer;\nRight click - dismiss.");
+                    ImGui.SetTooltip("部分雇员已完成探险任务。\\n左键点击 - 开启 AutoRetainer\\n右键点击 - 关闭提示");
                 }
             }
             else
@@ -319,14 +319,14 @@ internal class MultiModeOverlay : Window
         ImGui.Dummy(Vector2.One);
         if(Data != null && !C.OldStatusIcons)
         {
-            ImGuiEx.LineCentered("Status", delegate
+            ImGuiEx.LineCentered("状态", delegate
             {
                 if(C.MultiModeWorkshopConfiguration.MultiWaitForAll)
                 {
                     if(ThreadLoadImageHandler.TryGetTextureWrap(Path.Combine(Svc.PluginInterface.AssemblyLocation.DirectoryName, "res", "wait.png"), out var t))
                     {
                         ImGui.Image(t.Handle, StatusPanelSize / 2);
-                        ImGuiEx.Tooltip("Wait for all deployables is globally enabled.");
+                        ImGuiEx.Tooltip("已全域启用等待所有远征探险功能");
                     }
                     else
                     {
@@ -339,7 +339,7 @@ internal class MultiModeOverlay : Window
                     if(ThreadLoadImageHandler.TryGetTextureWrap(Path.Combine(Svc.PluginInterface.AssemblyLocation.DirectoryName, "res", "wait.png"), out var t))
                     {
                         ImGui.Image(t.Handle, StatusPanelSize / 2);
-                        ImGuiEx.Tooltip("Wait for all deployables is enabled for this character.");
+                        ImGuiEx.Tooltip("已为此角色启用等待所有远征探险功能");
                     }
                     else
                     {

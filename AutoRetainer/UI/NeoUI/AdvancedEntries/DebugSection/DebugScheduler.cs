@@ -15,7 +15,7 @@ internal unsafe class DebugScheduler : DebugSectionBase
         ImGuiEx.Text($"Gil: {TaskDepositGil.Gil}");
         ImGui.Checkbox($"TaskWithdrawGil.forceCheck", ref TaskWithdrawGil.forceCheck);
         ImGuiEx.Text($"{Svc.Data.GetExcelSheet<LogMessage>().GetRow(4578).Text.ToDalamudString().GetText(true)}");
-        if(ImGui.Button("Close retainer"))
+        if(ImGui.Button("关闭雇员选单"))
         {
             DuoLog.Information($"{RetainerHandlers.CloseAgentRetainer()}");
         }
@@ -137,22 +137,22 @@ internal unsafe class DebugScheduler : DebugSectionBase
         }
 
         ImGuiEx.Text($"Free inventory slots: {Utils.GetInventoryFreeSlotCount()}");
-        ImGui.InputText("Retainer name", ref dbgRetName, 50);
-        if(ImGui.Button("Select retainer by name"))
+        ImGui.InputText("雇员名称", ref dbgRetName, 50);
+        if(ImGui.Button("按名称选择雇员"))
         {
             DuoLog.Information($"{RetainerListHandlers.SelectRetainerByName(dbgRetName)}");
         }
 
-        if(ImGui.Button("AtkStage get focus"))
+        if(ImGui.Button("AtkStage 获取焦点"))
         {
             var ptr = (nint)AtkStage.Instance()->GetFocus();
             Svc.Chat.Print($"Stage focus: {ptr}");
         }
-        if(ImGui.Button("AtkStage clear focus"))
+        if(ImGui.Button("AtkStage 清除焦点"))
         {
             AtkStage.Instance()->ClearFocus();
         }
-        if(ImGui.Button("Try retrieve current retainer name"))
+        if(ImGui.Button("尝试获取当前雇员名称"))
         {
             if(TryGetAddonByName<AddonSelectString>("SelectString", out var select) && IsAddonReady(&select->AtkUnitBase))
             {
@@ -165,7 +165,7 @@ internal unsafe class DebugScheduler : DebugSectionBase
             }
         }
         {
-            if(ImGui.Button("Try close") && TryGetAddonByName<AtkUnitBase>("RetainerList", out var addon))
+            if(ImGui.Button("尝试关闭") && TryGetAddonByName<AtkUnitBase>("RetainerList", out var addon))
             {
                 var v = stackalloc AtkValue[1]
                 {
@@ -176,13 +176,13 @@ internal unsafe class DebugScheduler : DebugSectionBase
                                         }
                                 };
                 addon->FireCallback(1, v);
-                Notify.Info("Done");
+                Notify.Info("已完成");
             }
         }
         {
             if(TryGetAddonByName<AtkUnitBase>("Bank", out var addon) && IsAddonReady(addon))
             {
-                if(ImGui.Button("test bank"))
+                if(ImGui.Button("测试银行"))
                 {
                     var values = stackalloc AtkValue[2]
                     {

@@ -456,7 +456,7 @@ internal static unsafe class VoyageUtils
             log.Add($"index: {i}, id: {slot->ItemId}, cond: {slot->Condition}");
             if(slot->ItemId == 0)
             {
-                PluginLog.Warning($"Item id for airship component was 0 ({i})");
+                PluginLog.Warning($"飞空艇配件的物品 ID 为 0（{i}）");
                 continue;
             }
             if(slot->Condition == 0)

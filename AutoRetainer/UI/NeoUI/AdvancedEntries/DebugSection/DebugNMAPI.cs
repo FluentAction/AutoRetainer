@@ -15,8 +15,8 @@ internal class DebugNMAPI : DebugSectionBase
         ImGui.Checkbox("stopOnFocus", ref stopOnFocus);
         if(ImGui.Button("Flash")) new TickScheduler(() => P.NotificationMasterApi.FlashTaskbarIcon(), 1000);
         if(ImGui.Button("msg")) new TickScheduler(() => P.NotificationMasterApi.DisplayTrayNotification("Title", "Text"), 1000);
-        if(ImGui.Button("msg no title")) new TickScheduler(() => P.NotificationMasterApi.DisplayTrayNotification("Text"), 1000);
-        if(ImGui.Button("play sound")) new TickScheduler(() => P.NotificationMasterApi.PlaySound(path, vol, repeat, stopOnFocus), 1000);
-        if(ImGui.Button("stop sound")) P.NotificationMasterApi.StopSound();
+        if(ImGui.Button("消息（无标题）")) new TickScheduler(() => P.NotificationMasterApi.DisplayTrayNotification("Text"), 1000);
+        if(ImGui.Button("播放声音")) new TickScheduler(() => P.NotificationMasterApi.PlaySound(path, vol, repeat, stopOnFocus), 1000);
+        if(ImGui.Button("停止声音")) P.NotificationMasterApi.StopSound();
     }
 }

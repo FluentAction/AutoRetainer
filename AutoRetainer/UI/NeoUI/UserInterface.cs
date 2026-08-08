@@ -7,35 +7,35 @@ using System.Threading.Tasks;
 namespace AutoRetainer.UI.NeoUI;
 public sealed unsafe class UserInterface : NeoUIEntry
 {
-    public override string Path => "User Interface";
+    public override string Path => "用户界面";
 
     public override NuiBuilder Builder => new NuiBuilder()
 
-        .Section("User Interface")
-        .Checkbox("Anonymise Retainers", () => ref C.NoNames, "Retainer names will be redacted from general UI elements. They will not be hidden in debug menus and plugin logs however. While this option is on, character and retainer numbers are not guaranteed to be equal in different sections of a plugin (for example, retainer 1 in retainers view is not guaranteed to be the same retainer as in statistics view).")
-        .Checkbox("Display Quick Menu in Retainer UI", () => ref C.UIBar)
-        .Checkbox("Display Extended Retainer Info", () => ref C.ShowAdditionalInfo, "Displays retainer item level/gathering/perception and the name of their current venture in the main UI.")
-        .Widget("Do not close AutoRetainer windows on ESC key press", (x) =>
+        .Section("用户界面")
+        .Checkbox("匿名化雇员", () => ref C.NoNames, "雇员名称将在常规UI元素中被隐藏（调试选单和插件日志中仍可见）。启用此选项后，不同外挂程式界面中的角色和雇员编号可能不一致")
+        .Checkbox("在雇员界面显示快捷选单", () => ref C.UIBar)
+        .Checkbox("显示雇员详细信息", () => ref C.ShowAdditionalInfo, "在主界面显示雇员装等/获得力/鉴别力及其当前探险名称")
+        .Widget("按下 ESC 键时不关闭 AutoRetainer 窗口", (x) =>
         {
             if(ImGui.Checkbox(x, ref C.IgnoreEsc)) Utils.ResetEscIgnoreByWindows();
         })
-        .Checkbox("Display only most significant icon in status bar", () => ref C.StatusBarMSI)
-        .SliderInt(120f, "Status bar icon size", () => ref C.StatusBarIconWidth, 32, 128)
-        .Checkbox("Open AutoRetainer window on game start", () => ref C.DisplayOnStart)
+        .Checkbox("在状态栏仅显示最高优先级图标", () => ref C.StatusBarMSI)
+        .SliderInt(120f, "状态栏图示大小", () => ref C.StatusBarIconWidth, 32, 128)
+        .Checkbox("游戏启动时开启 AutoRetainer 窗口", () => ref C.DisplayOnStart)
         //.Checkbox("Skip item sell/trade confirmation while plugin is active", () => ref C.SkipItemConfirmations)
-        .Checkbox("Enable title screen button (requires plugin restart)", () => ref C.UseTitleScreenButton)
-        .Checkbox("Hide character search", () => ref C.NoCharaSearch)
-        .Checkbox("Don't flash background of characters that are complete", () => ref C.NoGradient)
-        .Checkbox("Do not warn about second game instance running from same directory", () => ref C.No2ndInstanceNotify, "This will automatically skip AutoRetainer's loading on second instance of the game and you will have no way of loading it until you disable this option in primary instance")
+        .Checkbox("启用标题界面按钮（需重启插件）", () => ref C.UseTitleScreenButton)
+        .Checkbox("隐藏角色搜索", () => ref C.NoCharaSearch)
+        .Checkbox("不为已完成角色显示背景闪烁", () => ref C.NoGradient)
+        .Checkbox("不警告同一目录运行多个游戏", () => ref C.No2ndInstanceNotify, "这将使AutoRetainer在第二个游戏客户端中自动跳过加载，除非在主要客户端中禁用此选项")
 
-        .Section("Character sorting in Retainer tab")
-        .Checkbox("Enable", () => ref C.EnableRetainerSort)
-        .TextWrapped("This is purely visual order and does not affects character processing in any way.")
+        .Section("雇员标签页角色排序")
+        .Checkbox("启用", () => ref C.EnableRetainerSort)
+        .TextWrapped("此排序仅影响视觉显示顺序，不会影响角色处理逻辑。")
         .Widget(() => UIUtils.DrawSortableEnumList("rorder", C.RetainersVisualOrders))
 
-        .Section("Character sorting in Deployables tab")
-        .Checkbox("Enable", () => ref C.EnableDeployablesSort)
-        .TextWrapped("This is purely visual order and does not affects character processing in any way.")
+        .Section("远征探险标签页角色排序")
+        .Checkbox("启用", () => ref C.EnableDeployablesSort)
+        .TextWrapped("此排序仅影响视觉显示顺序，不会影响角色处理逻辑。")
         .Widget(() => UIUtils.DrawSortableEnumList("dorder", C.DeployablesVisualOrders));
 
 

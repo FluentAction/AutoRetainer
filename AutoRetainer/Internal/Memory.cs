@@ -133,7 +133,7 @@ internal unsafe class Memory : IDisposable
             }
             else
             {
-                PluginLog.Warning($"Requested inventory slot {type}({slot}) had no item in it to sell.");
+                PluginLog.Warning($"请求出售的背包栏位 {type}({slot}) 中没有物品。");
             }
         }
         else

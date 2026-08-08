@@ -8,14 +8,14 @@ public sealed class FcDataManager
 
     public void Draw()
     {
-        ImGui.Checkbox($"Update every 30 hours", ref C.UpdateStaleFCData);
+        ImGui.Checkbox($"每30小时更新", ref C.UpdateStaleFCData);
         ImGui.SameLine();
-        if(ImGuiEx.Button("Update", Player.Interactable))
+        if(ImGuiEx.Button("更新", Player.Interactable))
         {
             S.FCPointsUpdater.ScheduleUpdateIfNeeded(true);
         }
         ImGui.SameLine();
-        ImGui.Checkbox($"Show only wallet FC", ref C.DisplayOnlyWalletFC);
+        ImGui.Checkbox($"仅显示钱包部队", ref C.DisplayOnlyWalletFC);
         if(ImGui.BeginTable("FCData", 5, ImGuiTableFlags.SizingFixedFit | ImGuiTableFlags.Borders | ImGuiTableFlags.RowBg))
         {
             ImGui.TableSetupColumn($"Name", ImGuiTableColumnFlags.WidthStretch);
@@ -41,13 +41,13 @@ public sealed class FcDataManager
                 foreach(var c in C.OfflineData.Where(z => z.FCID == x.Key))
                 {
                     ImGuiEx.Text(x.Value.HolderChara == c.CID && x.Value.GilCountsTowardsChara ? EColor.GreenBright : null, Censor.Character(c.Name, c.World));
-                    if(ImGuiEx.HoveredAndClicked("Left click - Relog to this character"))
+                    if(ImGuiEx.HoveredAndClicked("左键 - 重新登录此角色"))
                     {
                         Svc.Commands.ProcessCommand($"/ays relog {c.Name}@{c.World}");
                     }
                     if(x.Value.GilCountsTowardsChara)
                     {
-                        if(ImGuiEx.HoveredAndClicked("Right click - set as gil holder", ImGuiMouseButton.Right))
+                        if(ImGuiEx.HoveredAndClicked("右键 - 设为Gil持有者", ImGuiMouseButton.Right))
                         {
                             x.Value.HolderChara = c.CID;
                         }
@@ -59,7 +59,7 @@ public sealed class FcDataManager
                 {
                     ImGuiEx.Text($"{x.Value.Gil:N0}");
                     totalGil += x.Value.Gil;
-                    ImGuiEx.Tooltip($"Last updated {UpdatedWhen(x.Value.LastGilUpdate)}. Ctrl + click to reset");
+                    ImGuiEx.Tooltip($"最后更新于 {UpdatedWhen(x.Value.LastGilUpdate)}。Ctrl + 点击可重置");
                     if(ImGuiEx.HoveredAndClicked() && ImGuiEx.Ctrl)
                     {
                         x.Value.LastGilUpdate = -1;
@@ -68,7 +68,7 @@ public sealed class FcDataManager
                 }
                 else
                 {
-                    ImGuiEx.Text($"Unknown");
+                    ImGuiEx.Text($"未知");
                 }
 
                 ImGui.TableNextColumn();
@@ -76,11 +76,11 @@ public sealed class FcDataManager
                 {
                     ImGuiEx.Text($"{x.Value.FCPoints:N0}");
                     totalPoint += x.Value.FCPoints;
-                    ImGuiEx.Tooltip($"Last updated {UpdatedWhen(x.Value.FCPointsLastUpdate)}");
+                    ImGuiEx.Tooltip($"最后更新于 {UpdatedWhen(x.Value.FCPointsLastUpdate)}");
                 }
                 else
                 {
-                    ImGuiEx.Text($"Unknown");
+                    ImGuiEx.Text($"未知");
                 }
 
                 ImGui.TableNextColumn();
@@ -88,21 +88,21 @@ public sealed class FcDataManager
                 ImGuiEx.ButtonCheckbox($"\uf555##FC{x.Key}", ref x.Value.GilCountsTowardsChara, EColor.Green);
                 ImGui.PopFont();
                 ImGuiEx.DragDropRepopulate("GCTC", x.Value.GilCountsTowardsChara, ref x.Value.GilCountsTowardsChara);
-                ImGuiEx.Tooltip("Mark this free company as Wallet FC. Gil Display tab will include money of this FC.");
+                ImGuiEx.Tooltip("标记此部队为钱包部队。Gil显示标签页将包含此部队的Gil。");
                 ImGui.SameLine();
                 if(ImGuiEx.IconButton(FontAwesomeIcon.Trash, $"{x.Key}Dele", enabled: ImGuiEx.Ctrl))
                 {
                     new TickScheduler(() => C.FCData.Remove(x));
                 }
 
-                ImGuiEx.Tooltip($"Hold CTRL and click to delete this FC. Note that if you will relog to that FC, it will appear again.");
+                ImGuiEx.Tooltip($"按住CTRL并点击删除此部队。注意：如果重新登录此部队，它会再次出现。");
             }
 
             ImGui.TableNextRow();
             ImGui.TableSetBgColor(ImGuiTableBgTarget.RowBg0, EColor.GreenDark.ToUint());
             ImGui.TableSetBgColor(ImGuiTableBgTarget.RowBg1, EColor.GreenDark.ToUint());
             ImGui.TableNextColumn();
-            ImGuiEx.Text($"TOTAL");
+            ImGuiEx.Text($"总计");
             ImGui.TableNextColumn();
             ImGui.TableNextColumn();
             ImGuiEx.Text($"{totalGil:N0}");

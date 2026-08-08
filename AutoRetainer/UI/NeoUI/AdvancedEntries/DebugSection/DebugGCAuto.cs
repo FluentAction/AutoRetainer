@@ -7,7 +7,7 @@ internal unsafe class DebugGCAuto : DebugSectionBase
 {
     public override void Draw()
     {
-        if(ImGui.CollapsingHeader("Expert items"))
+        if(ImGui.CollapsingHeader("专家物品"))
         {
             foreach(var x in AutoGCHandin.GetHandinItems())
             {
@@ -16,11 +16,11 @@ internal unsafe class DebugGCAuto : DebugSectionBase
         }
         if(ImGui.Button("EnqueueInitiation")) GCContinuation.EnqueueInitiation(true);
         if(ImGui.Button("EnqueueExchangeClose")) GCContinuation.EnqueueDeliveryClose();
-        if(ImGui.Button("Step on")) P.TaskManager.StepMode = true;
+        if(ImGui.Button("步骤开启")) P.TaskManager.StepMode = true;
         ImGui.SameLine();
-        if(ImGui.Button("Step off")) P.TaskManager.StepMode = false;
+        if(ImGui.Button("步骤关闭")) P.TaskManager.StepMode = false;
         ImGui.SameLine();
-        if(ImGui.Button("Step")) P.TaskManager.Step();
+        if(ImGui.Button("步骤")) P.TaskManager.Step();
         if(ImGui.CollapsingHeader("GrandCompanySupplyList"))
         {
             if(TryGetAddonByName<AtkUnitBase>("GrandCompanySupplyList", out var addon) && IsAddonReady(addon))

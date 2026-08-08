@@ -23,7 +23,7 @@ internal unsafe class DebugMisc : DebugSectionBase
     public override void Draw()
     {
         if(ImGui.Button("EnableSingleMultiMode")) ECommonsIPC.AutoRetainer.EnableSingleMultiMode();
-        if(ImGui.CollapsingHeader("Move stuck detection"))
+        if(ImGui.CollapsingHeader("移动卡死检测"))
         {
             ImGuiEx.Text($"""
                 
@@ -44,8 +44,8 @@ internal unsafe class DebugMisc : DebugSectionBase
                 }
             }
         }
-        ImGui.Checkbox("RenderDisable verbose log", ref RenderDisableManager.Debug);
-        if(ImGui.Button("Execute plugin terminator"))
+        ImGui.Checkbox("渲染禁用详细记录", ref RenderDisableManager.Debug);
+        if(ImGui.Button("执行外挂终止器"))
         {
             S.PluginTerminator.OnUpdate();
         }
@@ -147,7 +147,7 @@ internal unsafe class DebugMisc : DebugSectionBase
                 }
             }
         }
-        if(ImGui.CollapsingHeader("Retainer item stats"))
+        if(ImGui.CollapsingHeader("雇员物品属性"))
         {
             var im = InventoryManager.Instance();
             var c = im->GetInventoryContainer(InventoryType.RetainerEquippedItems);
@@ -157,16 +157,16 @@ internal unsafe class DebugMisc : DebugSectionBase
                 ImGuiEx.Text($"{i} ({slot->GetItemId()}): {ExcelItemHelper.GetName(slot->GetItemId() % 1000000)}, gathering: {slot->GetStat(BaseParamEnum.Gathering)} [{slot->GetStatCap(BaseParamEnum.Gathering)}], perception: {slot->GetStat(BaseParamEnum.Perception)} [{slot->GetStatCap(BaseParamEnum.Perception)}]");
             }
         }
-        if(ImGui.Button("Test Haseltweaks"))
+        if(ImGui.Button("测试 HaselTweaks"))
         {
             Utils.EnsureEnhancedLoginIsOff();
         }
-        if(ImGui.Button("Write config via external process"))
+        if(ImGui.Button("通过外部进程写入配置"))
         {
             ExternalWriter.PlaceWriteOrder(new(System.IO.Path.Combine(Svc.PluginInterface.ConfigDirectory.FullName, "WriterTest.json"), EzConfig.DefaultSerializationFactory.Serialize(C, true)));
         }
         ImGuiEx.Text($"FC points: {Utils.FCPoints}");
-        if(ImGui.CollapsingHeader("Housing"))
+        if(ImGui.CollapsingHeader("房屋"))
         {
             var h = HousingManager.Instance();
             ImGuiEx.Text($"GetCurrentDivision {h->GetCurrentDivision()}");
@@ -174,7 +174,7 @@ internal unsafe class DebugMisc : DebugSectionBase
             ImGuiEx.Text($"GetCurrentPlot {h->GetCurrentPlot()}");
             ImGuiEx.Text($"GetCurrentRoom {h->GetCurrentRoom()}");
             ImGuiEx.Text($"GetCurrentWard {h->GetCurrentWard()}");
-            if(ImGui.Button("Simulate login"))
+            if(ImGui.Button("模拟登录"))
             {
                 ProperOnLogin.FireArtificially();
             }
@@ -186,12 +186,12 @@ internal unsafe class DebugMisc : DebugSectionBase
                 }
             }
         }
-        if(ImGui.Button("Install callback hook")) Callback.InstallHook();
-        if(ImGui.Button("Disable callback hook")) Callback.UninstallHook();
+        if(ImGui.Button("安装回调钩子")) Callback.InstallHook();
+        if(ImGui.Button("禁用回调钩子")) Callback.UninstallHook();
         ImGuiEx.TextCopy($"{(nint)(&TargetSystem.Instance()->Target):X16}");
-        ImGui.Checkbox($"Log opcodes", ref P.LogOpcodes);
+        ImGui.Checkbox($"记录操作码", ref P.LogOpcodes);
         ImGuiEx.Text($"CSFramework.Instance()->FrameCounter: {CSFramework.Instance()->FrameCounter}");
-        if(ImGui.Button("Test entrust dup"))
+        if(ImGui.Button("测试重复存放"))
         {
             if(TryGetAddonByName<AtkUnitBase>("RetainerItemTransferList", out var addon))
             {
@@ -199,11 +199,11 @@ internal unsafe class DebugMisc : DebugSectionBase
             }
         }
         ImGuiEx.Text($"Lockon: {*(byte*)((nint)TargetSystem.Instance() + 309)}");
-        if(ImGui.Button("Chill frames lock"))
+        if(ImGui.Button("解除帧率锁定"))
         {
             FPSManager.LockChillFrames();
         }
-        if(ImGui.Button("Unlock frames lock"))
+        if(ImGui.Button("启用帧率锁定"))
         {
             FPSManager.UnlockChillFrames();
         }
@@ -219,31 +219,31 @@ internal unsafe class DebugMisc : DebugSectionBase
         var ocd = Data;
         if(ocd != null)
         {
-            ImGuiEx.Text($"Level array:");
+            ImGuiEx.Text($"等级数组:");
             ImGuiEx.Text(ocd.ClassJobLevelArray.Print());
         }
 
         ImGuiEx.Text($"{Utils.TryGetCurrentRetainer(out var n)}/{n}");
         ImGuiEx.Text($"{ItemLevel.Calculate(out var g, out var p)}/{g}/{p}");
-        if(ImGui.Button("Regenerate censor seed"))
+        if(ImGui.Button("重新生成屏蔽种子"))
         {
             C.CensorSeed = Guid.NewGuid().ToString();
         }
         var inv = Utils.GetActiveRetainerInventoryName();
         ImGuiEx.Text($"Utils.GetActiveRetainerInventoryName(): {inv.Name} {inv.EntrustDuplicatesIndex}");
         ImGuiEx.Text($"ConditionWasEnabled={P.ConditionWasEnabled}");
-        if(ImGui.CollapsingHeader("Task debug"))
+        if(ImGui.CollapsingHeader("任务调试"))
         {
             ImGuiEx.Text($"Busy: {P.TaskManager.IsBusy}, abort in {P.TaskManager.RemainingTimeMS}");
-            if(ImGui.Button($"Generate random numbers 1/500"))
+            if(ImGui.Button($"生成随机数 1/500"))
             {
                 P.TaskManager.Enqueue(() => { var r = new Random().Next(0, 500); InternalLog.Verbose($"Gen 1/500: {r}"); return r == 0; });
             }
-            if(ImGui.Button($"Generate random numbers 1/5000"))
+            if(ImGui.Button($"生成随机数 1/5000"))
             {
                 P.TaskManager.Enqueue(() => { var r = new Random().Next(0, 5000); InternalLog.Verbose($"Gen 1/5000: {r}"); return r == 0; });
             }
-            if(ImGui.Button($"Generate random numbers 1/100"))
+            if(ImGui.Button($"生成随机数 1/100"))
             {
                 P.TaskManager.Enqueue(() => { var r = new Random().Next(0, 100); InternalLog.Verbose($"Gen 1/100: {r}"); return r == 0; });
             }
@@ -262,7 +262,7 @@ internal unsafe class DebugMisc : DebugSectionBase
 
         ImGui.Separator();
         {
-            if(ImGui.Button("Fire") && TryGetAddonByName<AtkUnitBase>("GrandCompanySupplyList", out var addon) && IsAddonReady(addon) && addon->UldManager.NodeList[5]->IsVisible())
+            if(ImGui.Button("触发") && TryGetAddonByName<AtkUnitBase>("GrandCompanySupplyList", out var addon) && IsAddonReady(addon) && addon->UldManager.NodeList[5]->IsVisible())
             {
                 AutoGCHandin.InvokeHandin(addon, 0);
             }

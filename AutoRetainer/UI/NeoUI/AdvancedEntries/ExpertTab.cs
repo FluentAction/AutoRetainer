@@ -4,42 +4,42 @@ using ECommons.Reflection;
 namespace AutoRetainer.UI.NeoUI.AdvancedEntries;
 public class ExpertTab : NeoUIEntry
 {
-    public override string Path => "Advanced/Expert Settings";
+    public override string Path => "高级设置/专家设置";
 
     public override NuiBuilder Builder { get; init; } = new NuiBuilder()
-        .Section("Behavior")
-        .EnumComboFullWidth(null, "Action on accessing retainer bell if no ventures available:", () => ref C.OpenBellBehaviorNoVentures)
-        .EnumComboFullWidth(null, "Action on accessing retainer bell if any ventures available:", () => ref C.OpenBellBehaviorWithVentures)
-        .EnumComboFullWidth(null, "Task completion behavior after accessing bell:", () => ref C.TaskCompletedBehaviorAccess)
-        .EnumComboFullWidth(null, "Task completion behavior after manual enabling:", () => ref C.TaskCompletedBehaviorManual)
-        .EnumComboFullWidth(null, "Task completion behavior during plugin operation:", () => ref C.TaskCompletedBehaviorAuto)
-        .TextWrapped(ImGuiColors.DalamudGrey, "\"Close retainer list and disable plugin\" option for 3 previous settings is enforced during MultiMode operation.")
-        .Checkbox("Stay in retainer menu if there are retainers to finish ventures within 5 minutes or less", () => ref C.Stay5, "This option is enforced during MultiMode operation.")
-        .Checkbox($"Auto-disable plugin when closing retainer list", () => ref C.AutoDisable, "Only applies when you exit menu by yourself. Otherwise, settings above apply.")
-        .Checkbox($"Do not show plugin status icons", () => ref C.HideOverlayIcons)
-        .Checkbox($"Display multi mode type selector", () => ref C.DisplayMMType)
-        .Checkbox($"Display deployables checkbox in workshop", () => ref C.ShowDeployables)
-        .Checkbox("Enable bailout module", () => ref C.EnableBailout)
-        .InputInt(150f, "Timeout before AutoRetainer will attempt to unstuck, seconds", () => ref C.BailoutTimeout)
+        .Section("行为设置")
+        .EnumComboFullWidth(null, "存取雇员铃铛时若无可用探险任务的动作：", () => ref C.OpenBellBehaviorNoVentures, null, Lang.OpenBellBehaviorNames)
+        .EnumComboFullWidth(null, "存取雇员铃铛时若有可用探险任务的动作：", () => ref C.OpenBellBehaviorWithVentures, null, Lang.OpenBellBehaviorNames)
+        .EnumComboFullWidth(null, "存取铃铛后任务完成的行为：", () => ref C.TaskCompletedBehaviorAccess, null, Lang.TaskCompletedBehaviorNames)
+        .EnumComboFullWidth(null, "手动启用后任务完成的行为：", () => ref C.TaskCompletedBehaviorManual, null, Lang.TaskCompletedBehaviorNames)
+        .EnumComboFullWidth(null, "插件运作期间任务完成的行为：", () => ref C.TaskCompletedBehaviorAuto, null, Lang.TaskCompletedBehaviorNames)
+        .TextWrapped(ImGuiColors.DalamudGrey, "多角色模式运作期间，上述3个设置中的\"关闭雇员清单并禁用外挂程式\"选项将被强制启用。")
+        .Checkbox("如果 5 分钟内有雇员将完成探险，则停留在雇员选单中", () => ref C.Stay5, "此选项在多角色模式运行期间强制启用。")
+        .Checkbox($"关闭雇员列表时自动禁用插件", () => ref C.AutoDisable, "仅在你手动退出选单时生效；否则将套用上方的设置。")
+        .Checkbox($"不显示插件状态图标", () => ref C.HideOverlayIcons)
+        .Checkbox($"显示多角色模式类型选择器", () => ref C.DisplayMMType)
+        .Checkbox($"在部队工房中显示远航探险", () => ref C.ShowDeployables)
+        .Checkbox("启用应急复原模块", () => ref C.EnableBailout)
+        .InputInt(150f, "AutoRetainer尝试解除卡死前的超时时间(秒)", () => ref C.BailoutTimeout)
 
-        .Section("Settings")
-        .Checkbox("Allow operating on retainers without a job", () => ref C.AllowUnemployed)
-        .Widget("Skip Inn Login Cutscene", text =>
+        .Section("设置")
+        .Checkbox("允许操作没有职业的雇员", () => ref C.AllowUnemployed)
+        .Widget("跳过旅馆登录动画", text =>
         {
             ImGui.SetNextItemWidth(200);
-            if(ImGuiEx.EnumCombo(text, ref C.CutsceneSkipMode))
+            if(ImGuiEx.EnumCombo(text, ref C.CutsceneSkipMode, null, Lang.CutsceneSkipModeNames))
             {
                 S.InnCutsceneSkip.RefreshAccordingToConfig();
             }
-            ImGuiEx.HelpMarker("Cutscene skip is detectable server-side and increases chance of ban", EColor.RedBright, FontAwesomeIcon.ExclamationTriangle.ToIconString());
+            ImGuiEx.HelpMarker("跳过登录动画可被服务器检测到，会增加被封锁机率", EColor.RedBright, FontAwesomeIcon.ExclamationTriangle.ToIconString());
         })
-        .Checkbox($"Disable sorting and collapsing/expanding", () => ref C.NoCurrentCharaOnTop)
-        .Checkbox($"Show MultiMode checkbox on plugin UI bar", () => ref C.MultiModeUIBar)
-        .SliderIntAsFloat(100f, "Retainer menu delay, seconds", () => ref C.RetainerMenuDelay.ValidateRange(0, 2000), 0, 2000)
-        .Checkbox($"Allow venture timer to display negative values", () => ref C.TimerAllowNegative)
-        .Checkbox($"Do not error check venture planner", () => ref C.NoErrorCheckPlanner2)
-        .Checkbox("Enable Manual relogs character postprocess", () => ref C.AllowManualPostprocess, "Allow manual command invocation while AutoRetainer locked in postprocess. ")
-        .Widget("Market Cooldown Overlay", (x) =>
+        .Checkbox($"禁用排序和折叠/展开功能", () => ref C.NoCurrentCharaOnTop)
+        .Checkbox($"在插件UI栏显示多角色模式复选框", () => ref C.MultiModeUIBar)
+        .SliderIntAsFloat(100f, "雇员选单延迟(秒)", () => ref C.RetainerMenuDelay.ValidateRange(0, 2000), 0, 2000)
+        .Checkbox($"允许探险计时器显示负值", () => ref C.TimerAllowNegative)
+        .Checkbox($"不检查派遣计划错误", () => ref C.NoErrorCheckPlanner2)
+        .Checkbox("启用手动重新登录后的角色后处理", () => ref C.AllowManualPostprocess, "当 AutoRetainer 锁定在后处理状态时，允许手动调用指令。")
+        .Widget("市场冷却时间覆盖层", (x) =>
         {
             if(ImGui.Checkbox(x, ref C.MarketCooldownOverlay))
             {
@@ -54,14 +54,14 @@ public class ExpertTab : NeoUIEntry
             }
         })
 
-        .Section("Integrations")
-        .Checkbox($"Artisan integration", () => ref C.ArtisanIntegration, "Automatically enables AutoRetainer while Artisan is Pauses Artisan operation when ventures are ready to be collected and a retainer bell is within range. Once ventures have been dealt with Artisan will be enabled and resume whatever it was doing.")
+        .Section("插件整合")
+        .Checkbox($"Artisan 整合功能", () => ref C.ArtisanIntegration, "当探险任务准备好领取且附近有雇员铃铛时，自动启用 AutoRetainer 并暂停 Artisan 的操作。当雇员任务处理完毕后，Artisan 将重新启用并恢复之前的动作")
 
-        .Section("Server Time")
-        .Checkbox("Use server time instead of PC time", () => ref C.UseServerTime)
+        .Section("服务器时间")
+        .Checkbox("使用服务器时间而非本地时间", () => ref C.UseServerTime)
 
-        .Section("Utility")
-        .Widget("Cleanup ghost retainers", (x) =>
+        .Section("工具")
+        .Widget("清理幽灵雇员", (x) =>
         {
             if(ImGui.Button(x))
             {
@@ -74,10 +74,10 @@ public class ExpertTab : NeoUIEntry
             }
         })
 
-        .Section("Import/Export")
+        .Section("导入/导出")
         .Widget(() =>
         {
-            if(ImGui.Button("Export without character data"))
+            if(ImGui.Button("导出（不含角色资料）"))
             {
                 var clone = C.JSONClone();
                 clone.OfflineData = null;
@@ -88,7 +88,7 @@ public class ExpertTab : NeoUIEntry
                 clone.AutoLogin = "";
                 Copy(EzConfig.DefaultSerializationFactory.Serialize(clone, false));
             }
-            if(ImGui.Button("Import and merge with character data"))
+            if(ImGui.Button("导入并合并角色资料"))
             {
                 try
                 {

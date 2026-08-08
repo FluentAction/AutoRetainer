@@ -8,21 +8,21 @@ using Lumina.Excel.Sheets;
 namespace AutoRetainer.UI.NeoUI.InventoryManagementEntries;
 public class EntrustManager : InventoryManagementBase
 {
-    public override string Name { get; } = "Entrust Manager";
+    public override string Name { get; } = "委托管理";
     private Guid SelectedGuid = Guid.Empty;
     private string Filter = "";
     private InventoryManagementCommon InventoryManagementCommon = new();
 
     public override void Draw()
     {
-        ImGuiEx.TextWrapped("Use advanced entrust manager to entrust specific items to specific retainers. In this window you can configure specific plans; then, you can assign entrust plans to your retainers in retainer configuration window.");
-        ImGui.Checkbox("Enable", ref C.EnableEntrustManager);
-        ImGui.Checkbox("Output entrusted items into chat", ref C.EnableEntrustChat);
+        ImGuiEx.TextWrapped("使用高级存放管理器将特定物品存入特定雇员。在此窗口中可设置具体存放方案；随后，您可在雇员配置窗口中将存放方案指派给雇员。");
+        ImGui.Checkbox("启用", ref C.EnableEntrustManager);
+        ImGui.Checkbox("将委托的物品输出至聊天频道", ref C.EnableEntrustChat);
         var selectedPlan = C.EntrustPlans.FirstOrDefault(x => x.Guid == SelectedGuid);
 
         ImGuiEx.InputWithRightButtonsArea(() =>
         {
-            if(ImGui.BeginCombo($"##select", selectedPlan?.Name ?? "Select plan...", ImGuiComboFlags.HeightLarge))
+            if(ImGui.BeginCombo($"##select", selectedPlan?.Name ?? "选择方案...", ImGuiComboFlags.HeightLarge))
             {
                 for(var i = 0; i < C.EntrustPlans.Count; i++)
                 {
@@ -50,14 +50,14 @@ public class EntrustManager : InventoryManagementBase
             {
                 C.EntrustPlans.Remove(selectedPlan);
             }
-            ImGuiEx.Tooltip("Hold CTRL and click");
+            ImGuiEx.Tooltip("按住 CTRL 并点击");
             ImGui.SameLine();
             if(ImGuiEx.IconButton(FontAwesomeIcon.Copy, enabled: selectedPlan != null))
             {
                 Copy(EzConfig.DefaultSerializationFactory.Serialize(selectedPlan, false));
             }
             ImGui.SameLine();
-            if(ImGuiEx.IconButton(FontAwesomeIcon.Paste, enabled: EzThrottler.Check("ImportPlan")))
+            if(ImGuiEx.IconButton(FontAwesomeIcon.Paste, enabled: EzThrottler.Check("导入计划")))
             {
                 try
                 {
@@ -66,7 +66,7 @@ public class EntrustManager : InventoryManagementBase
                     if(plan.GetType().GetFieldPropertyUnions(ReflectionHelper.AllFlags).Any(x => x.GetValue(plan) == null)) throw new NullReferenceException();
                     C.EntrustPlans.Add(plan);
                     SelectedGuid = plan.Guid;
-                    Notify.Success("Imported plan from clipboard");
+                    Notify.Success("已从剪贴簿导入计划");
                     EzThrottler.Throttle("ImportPlan", 2000, true);
                 }
                 catch(Exception e)
@@ -78,26 +78,26 @@ public class EntrustManager : InventoryManagementBase
         if(selectedPlan != null)
         {
             ImGuiEx.SetNextItemFullWidth();
-            ImGui.InputTextWithHint($"##name", "Plan name", ref selectedPlan.Name, 100);
-            ImGui.Checkbox("Entrust Duplicates", ref selectedPlan.Duplicates);
-            ImGuiEx.HelpMarker("Mimics vanilla entrust duplicates option: entrusts any items that already present in retainer's inventory up until your retainer fills up it's stack of items. Does not affects crystals. Items and categories that are explicitly added into the list below will be excluded from being processed by this option.");
+            ImGui.InputTextWithHint($"##name", "计划名称", ref selectedPlan.Name, 100);
+            ImGui.Checkbox("存放重复物品", ref selectedPlan.Duplicates);
+            ImGuiEx.HelpMarker("模拟游戏原生的存放重复物品功能：将你身上已存在于雇员背包中的物品移交过去，直到该物品堆叠满为止。此功能不影响水晶。加入下方清单的物品或类别将不会被此选项处理。");
             ImGui.Indent();
-            ImGui.Checkbox("Allow going over stack", ref selectedPlan.DuplicatesMultiStack);
-            ImGuiEx.HelpMarker("Allows entrust duplicates to create new stacks of items that already exist in the selected retainer.");
+            ImGui.Checkbox("允许超过堆叠上限", ref selectedPlan.DuplicatesMultiStack);
+            ImGuiEx.HelpMarker("允许在存放重复物品时，于所选雇员背包中建立该物品的新堆叠。");
             ImGui.Unindent();
-            ImGui.Checkbox("Allow entrusting from Armory Chest", ref selectedPlan.AllowEntrustFromArmory);
-            ImGui.Checkbox("Manual execution only", ref selectedPlan.ManualPlan);
-            ImGuiEx.HelpMarker("Mark this plan for manual execution only. This plan will only be processed upon manual \"Entrust Items\" button click and never automatically.");
-            ImGui.Checkbox("Exclude items present in protection list", ref selectedPlan.ExcludeProtected);
+            ImGui.Checkbox("允许从兵装库存放物品", ref selectedPlan.AllowEntrustFromArmory);
+            ImGui.Checkbox("仅限手动执行", ref selectedPlan.ManualPlan);
+            ImGuiEx.HelpMarker("将此计划标记为仅限手动执行。此计划只会在手动点击 \"存放物品\" 按钮时执行，绝不会自动运行。");
+            ImGui.Checkbox("排除存在于保护清单中的物品", ref selectedPlan.ExcludeProtected);
             ImGui.Separator();
             ImGuiEx.TreeNodeCollapsingHeader($"Entrust categories ({selectedPlan.EntrustCategories.Count} selected)###ecats", () =>
             {
-                ImGuiEx.TextWrapped($"Here you can select item categories that will be entrusted as a whole. Individual items that are selected below will be excluded from these rules.");
-                if(ImGui.BeginTable("EntrustTable", 3, ImGuiTableFlags.SizingFixedFit | ImGuiTableFlags.NoSavedSettings | ImGuiTableFlags.BordersInner))
+                ImGuiEx.TextWrapped($"你可以在此选择要整类存放的物品类别。下方单独选取的特定物品将不受此规则限制。");
+                if(ImGui.BeginTable("存放清单表格", 3, ImGuiTableFlags.SizingFixedFit | ImGuiTableFlags.NoSavedSettings | ImGuiTableFlags.BordersInner))
                 {
                     ImGui.TableSetupColumn("##1");
-                    ImGui.TableSetupColumn("Item name", ImGuiTableColumnFlags.WidthStretch);
-                    ImGui.TableSetupColumn("Amount to keep");
+                    ImGui.TableSetupColumn("物品名称", ImGuiTableColumnFlags.WidthStretch);
+                    ImGui.TableSetupColumn("保留数量");
                     ImGui.TableHeadersRow();
                     foreach(var x in Svc.Data.GetExcelSheet<ItemUICategory>())
                     {
@@ -145,14 +145,14 @@ public class EntrustManager : InventoryManagementBase
                     {
                         selectedPlan.EntrustItemsAmountToKeep[x] = amount;
                     }
-                    ImGuiEx.Tooltip("Amount to keep in your inventory");
+                    ImGuiEx.Tooltip("保留在自己背包中的数量");
                 });
             });
             ImGuiEx.TreeNodeCollapsingHeader($"Fast addition/removal", () =>
             {
-                ImGuiEx.TextWrapped(GradientColor.Get(EColor.RedBright, EColor.YellowBright), $"While this text is visible, hover over items while holding:");
-                ImGuiEx.Text(!ImGui.GetIO().KeyShift ? ImGuiColors.DalamudGrey : ImGuiColors.DalamudRed, $"Shift - add to entrust plan");
-                ImGuiEx.Text(!ImGui.GetIO().KeyAlt ? ImGuiColors.DalamudGrey : ImGuiColors.DalamudRed, $"Alt - delete from entrust plan");
+                ImGuiEx.TextWrapped(GradientColor.Get(EColor.RedBright, EColor.YellowBright), $"当此文字可见时，将滑鼠悬停在物品上并按住按键:");
+                ImGuiEx.Text(!ImGui.GetIO().KeyShift ? ImGuiColors.DalamudGrey : ImGuiColors.DalamudRed, $"Shift - 添加至存入计划");
+                ImGuiEx.Text(!ImGui.GetIO().KeyAlt ? ImGuiColors.DalamudGrey : ImGuiColors.DalamudRed, $"Alt - 从委托方案删除");
                 if(Svc.GameGui.HoveredItem > 0)
                 {
                     var id = (uint)(Svc.GameGui.HoveredItem % 1000000);
@@ -161,7 +161,7 @@ public class EntrustManager : InventoryManagementBase
                         if(!selectedPlan.EntrustItems.Contains(id))
                         {
                             selectedPlan.EntrustItems.Add(id);
-                            Notify.Success($"Added {ExcelItemHelper.GetName(id)} to entrust plan {selectedPlan.Name}");
+                            Notify.Success($"已将 {ExcelItemHelper.GetName(id)} 添加到存放计划 {selectedPlan.Name}");
                         }
                     }
                     if(ImGui.GetIO().KeyAlt)
@@ -169,7 +169,7 @@ public class EntrustManager : InventoryManagementBase
                         if(selectedPlan.EntrustItems.Contains(id))
                         {
                             selectedPlan.EntrustItems.Remove(id);
-                            Notify.Success($"Removed {ExcelItemHelper.GetName(id)} from entrust plan {selectedPlan.Name}");
+                            Notify.Success($"已将 {ExcelItemHelper.GetName(id)} 从存放计划 {selectedPlan.Name} 移除");
                         }
                     }
                 }

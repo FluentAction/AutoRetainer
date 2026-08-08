@@ -11,7 +11,7 @@ public class CharaConfig
         SharedUI.DrawMultiModeHeader(data);
         var b = new NuiBuilder()
 
-        .Section("General Character Specific Settings")
+        .Section("通用角色特定设置")
         .Widget(() =>
         {
             SharedUI.DrawServiceAccSelector(data);
@@ -19,45 +19,45 @@ public class CharaConfig
         });
         if(isRetainer)
         {
-            b = b.Section("Retainers").Widget(() =>
+            b = b.Section("雇员管理").Widget(() =>
             {
-                ImGuiEx.Text($"Automatic Grand Company Expert Delivery:");
+                ImGuiEx.Text($"自动筹备稀有品:");
                 if(!AutoGCHandin.Operation)
                 {
                     ImGuiEx.SetNextItemWidthScaled(200f);
-                    ImGuiEx.EnumCombo("##gcHandin", ref data.GCDeliveryType);
+                    ImGuiEx.EnumCombo("##gcHandin", ref data.GCDeliveryType, null, Lang.GCDeliveryTypeNames);
                 }
                 else
                 {
-                    ImGuiEx.Text($"Can't change this now");
+                    ImGuiEx.Text($"目前无法更改此设置");
                 }
             });
         }
         else
         {
-            b = b.Section("Deployables").Widget(() =>
+            b = b.Section("远征探险").Widget(() =>
             {
-                ImGui.Checkbox($"Wait For Voyage Completion", ref data.MultiWaitForAllDeployables);
+                ImGui.Checkbox($"等待航程完成", ref data.MultiWaitForAllDeployables);
                 ImGuiComponents.HelpMarker("""This setting works like the global option but applies to individual characters. When enabled, AutoRetainer will wait for all deployables to return before logging into the character. If you're already logged in for another reason, it will still resend completed submarines—unless the global setting "Wait even when already logged in" is also turned on.""");
             });
         }
-        b = b.Section("Teleport overrides", data.GetAreTeleportSettingsOverriden() ? ImGui.GetStyle().Colors[(int)ImGuiCol.FrameBg] with { X = 1f } : null, true)
+        b = b.Section("传送覆盖设置", data.GetAreTeleportSettingsOverriden() ? ImGui.GetStyle().Colors[(int)ImGuiCol.FrameBg] with { X = 1f } : null, true)
         .Widget(() =>
         {
-            ImGuiEx.Text($"You can override teleport settings per character.");
+            ImGuiEx.Text($"您可以为每个角色覆盖传送设置");
             bool? demo = null;
-            ImGuiEx.Checkbox("Options marked with this marker will use values from global configuration", ref demo);
-            ImGuiEx.Checkbox("Enabled", ref data.TeleportOptionsOverride.Enabled);
+            ImGuiEx.Checkbox("标记此图示的选项将使用全域配置中的值", ref demo);
+            ImGuiEx.Checkbox("启用", ref data.TeleportOptionsOverride.Enabled);
             ImGui.Indent();
-            ImGuiEx.Checkbox("Teleport for retainers...", ref data.TeleportOptionsOverride.Retainers);
+            ImGuiEx.Checkbox("为传唤铃传送...", ref data.TeleportOptionsOverride.Retainers);
             ImGui.Indent();
-            ImGuiEx.Checkbox("...to private house", ref data.TeleportOptionsOverride.RetainersPrivate);
-            ImGuiEx.Checkbox("...to shared house", ref data.TeleportOptionsOverride.RetainersShared);
-            ImGuiEx.Checkbox("...to free company house", ref data.TeleportOptionsOverride.RetainersFC);
-            ImGuiEx.Checkbox("...to apartment", ref data.TeleportOptionsOverride.RetainersApartment);
-            ImGui.Text("If all above are disabled or fail, will be teleported to inn.");
+            ImGuiEx.Checkbox("...到私人房屋", ref data.TeleportOptionsOverride.RetainersPrivate);
+            ImGuiEx.Checkbox("...到共享房屋", ref data.TeleportOptionsOverride.RetainersShared);
+            ImGuiEx.Checkbox("...到部队房屋", ref data.TeleportOptionsOverride.RetainersFC);
+            ImGuiEx.Checkbox("...到公寓", ref data.TeleportOptionsOverride.RetainersApartment);
+            ImGui.Text("如果以上所有选项都禁用或失败，将会传送到旅馆");
             ImGui.Unindent();
-            ImGuiEx.Checkbox("Teleport to free company house for deployables", ref data.TeleportOptionsOverride.Deployables);
+            ImGuiEx.Checkbox("为潜水艇/飞艇传送至部队房屋", ref data.TeleportOptionsOverride.Deployables);
             ImGui.Unindent(); 
         }).Draw();
         SharedUI.DrawExcludeReset(data);

@@ -45,7 +45,7 @@ internal unsafe class ContextMenuManager
                             }
                             else
                             {
-                                Notify.Error($"Hold both CTRL+SHIFT while clicking to remove protection from item");
+                                Notify.Error($"按住 CTRL+SHIFT 点击可从物品上移除保护");
                             }
                         }
                     }.RemovePrefix());
@@ -61,7 +61,7 @@ internal unsafe class ContextMenuManager
                             OnClicked = (a) =>
                             {
                                 Data.GetIMSettings(true).IMAutoVendorSoft.Remove(id);
-                                Notify.Info($"Item {ExcelItemHelper.GetName(id)} removed from Quick Venture sell list");
+                                Notify.Info($"物品 {ExcelItemHelper.GetName(id)} 已从快速探险出售列表移除");
                             }
                         }.RemovePrefix());
                     }
@@ -74,7 +74,7 @@ internal unsafe class ContextMenuManager
                             {
                                 if(Data.GetIMSettings(true).AddItemToList(IMListKind.SoftSell, id, out var error))
                                 {
-                                    Notify.Success($"Item {ExcelItemHelper.GetName(id)} added to Quick Venture sell list");
+                                    Notify.Success($"物品 {ExcelItemHelper.GetName(id)} 已添加到快速探险出售列表");
                                 }
                                 else
                                 {
@@ -92,7 +92,7 @@ internal unsafe class ContextMenuManager
                             OnClicked = (a) =>
                             {
                                 Data.GetIMSettings(true).IMAutoVendorHard.Remove(id);
-                                Notify.Success($"Item {ExcelItemHelper.GetName(id)} removed from Unconditional sell list");
+                                Notify.Success($"物品 {ExcelItemHelper.GetName(id)} 已从无条件出售列表移除");
                             }
                         }.RemovePrefix());
                     }
@@ -105,7 +105,7 @@ internal unsafe class ContextMenuManager
                             {
                                 if(Data.GetIMSettings(true).AddItemToList(IMListKind.HardSell, id, out var error))
                                 {
-                                    Notify.Success($"Item {ExcelItemHelper.GetName(id)} added to Unconditional sell list");
+                                    Notify.Success($"物品 {ExcelItemHelper.GetName(id)} 已添加到无条件出售列表");
                                 }
                                 else
                                 {
@@ -123,7 +123,7 @@ internal unsafe class ContextMenuManager
                             OnClicked = (a) =>
                             {
                                 Data.GetIMSettings(true).IMDiscardList.Remove(id);
-                                Notify.Success($"Item {ExcelItemHelper.GetName(id)} removed from Discard list");
+                                Notify.Success($"物品 {ExcelItemHelper.GetName(id)} 已从丢弃列表移除");
                             }
                         }.RemovePrefix());
                     }
@@ -136,7 +136,7 @@ internal unsafe class ContextMenuManager
                             {
                                 if(Data.GetIMSettings(true).AddItemToList(IMListKind.Discard, id, out var error))
                                 {
-                                    Notify.Success($"Item {ExcelItemHelper.GetName(id)} added to Discard list");
+                                    Notify.Success($"物品 {ExcelItemHelper.GetName(id)} 已添加到丢弃列表");
                                 }
                                 else
                                 {
@@ -153,7 +153,7 @@ internal unsafe class ContextMenuManager
                         {
                             if(Data.GetIMSettings(true).AddItemToList(IMListKind.Protect, id, out var error))
                             {
-                                Notify.Success($"{ExcelItemHelper.GetName(id)} added to protection list");
+                                Notify.Success($"{ExcelItemHelper.GetName(id)} 已添加到保护列表");
                             }
                             else
                             {

@@ -28,7 +28,7 @@ internal unsafe class DebugReader : DebugSectionBase
                     var amount = Math.Floor((float)reader.Credits / (float)(x.Price));
                 }
 
-                if(ImGui.Button("Run task")) TaskRecursivelyBuyFuel.Enqueue();
+                if(ImGui.Button("运行任务")) TaskRecursivelyBuyFuel.Enqueue();
             }
         }
 

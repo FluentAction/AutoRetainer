@@ -84,7 +84,7 @@ internal static unsafe class RetainerHandlers
         }
         if(EzThrottler.Throttle("EnforceSelectString", 3000))
         {
-            PluginLog.Warning($"Enforcing {Action.GetType().FullName} ");
+            PluginLog.Warning($"强制执行 {Action.GetType().FullName} ");
             Action();
         }
         return false;
@@ -483,7 +483,7 @@ internal static unsafe class RetainerHandlers
                 }
                 else
                 {
-                    PluginLog.Error($"Can not find venture id {VentureID} [{ventureName}] in list {VentureUtils.GetAvailableVentureNames().Print()}");
+                    PluginLog.Error($"在列表 {VentureID} 中找不到委托 ID {ventureName} [{VentureUtils.GetAvailableVentureNames().Print()}]");
                 }
             }
         }

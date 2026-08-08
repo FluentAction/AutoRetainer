@@ -35,7 +35,7 @@ internal static unsafe class TaskRedeployPreviousLog
                     if(req > have)
                     {
                         P.TaskManager.Abort();
-                        DuoLog.Warning($"[Voyage] You are out of fuel!");
+                        DuoLog.Warning($"[远征] 你的燃料用完了！");
                         Data.WorkshopEnabled = false;
                         P.TaskManager.BeginStack();
                         P.TaskManager.Enqueue(VoyageScheduler.CancelDeployVessel);

@@ -71,13 +71,13 @@ internal static class UIUtils
         {
             if(!Utils.IsLifestreamInstalled())
             {
-                Utils.DrawLifestreamWarning("Multi Mode");
+                Utils.DrawLifestreamWarning("多角色模式");
             }
         }
         if(!C.NoCharaSearch)
         {
             ImGuiEx.SetNextItemFullWidth();
-            ImGui.InputTextWithHint("##search", "Search characters...", ref Ref<string>.Get("SearchChara"), 50);
+            ImGui.InputTextWithHint("##search", "搜索角色...", ref Ref<string>.Get("搜索角色"), 50);
         }
     }
 
@@ -88,7 +88,7 @@ internal static class UIUtils
             ImGui.PushFont(UiBuilder.IconFont);
             ImGuiEx.Text("\uf0ac");
             ImGui.PopFont();
-            if(ImGuiEx.HoveredAndClicked("Visiting another data center. Right click to clear this status.", ImGuiMouseButton.Right))
+            if(ImGuiEx.HoveredAndClicked("正在访问另一个数据中心。点击右键以清除此状态。", ImGuiMouseButton.Right))
             {
                 data.WorldOverride = null;
             }
@@ -115,7 +115,7 @@ internal static class UIUtils
             ImGui.PushFont(UiBuilder.IconFont);
             ImGuiEx.Text(error == null ? null : ImGuiColors.DalamudGrey3, "\uf1ad");
             ImGui.PopFont();
-            ImGuiEx.Tooltip(error ?? $"Free company house is registered in Lifestream and path is set. You will be teleported to Free company house for resending Deployables. If enabled, you will be teleported to Free company house for resending retainers as well.\nAddress: {Svc.Data.GetExcelSheet<Aetheryte>().GetRowOrDefault((uint)data.FC.ResidentialDistrict)?.Territory.Value.PlaceNameRegion.Value.Name}, ward {data.FC.Ward + 1}, plot {data.FC.Plot + 1}");
+            ImGuiEx.Tooltip(error ?? $"已在 Lifestream 中登记部队房屋并设置路径。将传送你到部队房屋以重新派遣远征探险。如已启用，也会传送你到部队房屋以重新派遣雇员。\n地址: {Svc.Data.GetExcelSheet<Aetheryte>().GetRowOrDefault((uint)data.FC.ResidentialDistrict)?.Territory.Value.PlaceNameRegion.Value.Name}，区 {data.FC.Ward + 1}，地块 {data.FC.Plot + 1}");
             ImGui.SameLine(0, 3);
         }
         if(offlineData.GetAllowPrivateTeleportForRetainers())
@@ -132,7 +132,7 @@ internal static class UIUtils
             ImGui.PushFont(UiBuilder.IconFont);
             ImGuiEx.Text(error == null ? null : ImGuiColors.DalamudGrey3, "\ue1b0");
             ImGui.PopFont();
-            ImGuiEx.Tooltip(error ?? $"Private house is registered in Lifestream and path is set. You will be teleported to Private house for resending Retainers.\nAddress: {Svc.Data.GetExcelSheet<Aetheryte>().GetRowOrDefault((uint)data.Private.ResidentialDistrict)?.Territory.Value.PlaceNameRegion.Value.Name}, ward {data.Private.Ward + 1}, plot {data.Private.Plot + 1}");
+            ImGuiEx.Tooltip(error ?? $"已在 Lifestream 中登记私人房屋并设置路径。将传送你到私人房屋以重新派遣雇员。\n地址: {Svc.Data.GetExcelSheet<Aetheryte>().GetRowOrDefault((uint)data.Private.ResidentialDistrict)?.Territory.Value.PlaceNameRegion.Value.Name}，区 {data.Private.Ward + 1}，地块 {data.Private.Plot + 1}");
             ImGui.SameLine(0, 3);
         }
         if(offlineData.GetAllowSharedTeleportForRetainers())
@@ -215,7 +215,7 @@ internal static class UIUtils
         {
             fps = GetFPSFromMSPT(frameTime);
         }
-        ImGuiEx.SliderInt(name, ref fps, min, 60, fps == 60 ? "Unlimited" : null, ImGuiSliderFlags.AlwaysClamp);
+        ImGuiEx.SliderInt(name, ref fps, min, 60, fps == 60 ? "无限" : null, ImGuiSliderFlags.AlwaysClamp);
         frameTime = fps == 60 ? 0 : (int)(1000f / fps);
     }
 
@@ -231,7 +231,7 @@ internal static class UIUtils
             P.quickSellItems.Toggle();
         }
         ImGui.SameLine();
-        ImGuiEx.Text("+ right click");
+        ImGuiEx.Text("+ 右键");
     }
 
     private static string KeyInputActive = null;
@@ -247,7 +247,7 @@ internal static class UIUtils
         {
             if(text == KeyInputActive)
             {
-                ImGuiEx.Text(ImGuiColors.DalamudYellow, $"Now press new key...");
+                ImGuiEx.Text(ImGuiColors.DalamudYellow, $"请按下新的按键...");
                 foreach(var x in Enum.GetValues<LimitedKeys>())
                 {
                     if(IsKeyPressed(x))
@@ -261,11 +261,11 @@ internal static class UIUtils
             }
             else
             {
-                if(ImGui.Selectable("Auto-detect new key", false, ImGuiSelectableFlags.DontClosePopups))
+                if(ImGui.Selectable("自动侦测新按键", false, ImGuiSelectableFlags.DontClosePopups))
                 {
                     KeyInputActive = text;
                 }
-                ImGuiEx.Text($"Select key manually:");
+                ImGuiEx.Text($"手动选择按键:");
                 ImGuiEx.SetNextItemFullWidth();
                 ImGuiEx.EnumCombo("##selkeyman", ref key);
             }

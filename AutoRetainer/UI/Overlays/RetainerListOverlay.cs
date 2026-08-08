@@ -13,7 +13,7 @@ internal unsafe class RetainerListOverlay : Window
     private float height;
     internal volatile string PluginToProcess = null;
 
-    public RetainerListOverlay() : base("AutoRetainer retainerlist overlay", ImGuiWindowFlags.NoDecoration | ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoFocusOnAppearing, true)
+    public RetainerListOverlay() : base("AutoRetainer 雇员列表覆盖层", ImGuiWindowFlags.NoDecoration | ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoFocusOnAppearing, true)
     {
         P.WindowSystem.AddWindow(this);
         RespectCloseHotkey = false;
@@ -44,7 +44,7 @@ internal unsafe class RetainerListOverlay : Window
         {
             ImGui.BeginDisabled();
         }
-        if(ImGui.Checkbox("Enable AutoRetainer", ref e))
+        if(ImGui.Checkbox("启用 AutoRetainer", ref e))
         {
             P.WasEnabled = false;
             if(e)
@@ -64,12 +64,12 @@ internal unsafe class RetainerListOverlay : Window
         if(P.WasEnabled)
         {
             ImGui.SameLine();
-            ImGuiEx.Text(GradientColor.Get(ImGuiColors.DalamudGrey, ImGuiColors.DalamudGrey3, 500), $"Paused");
+            ImGuiEx.Text(GradientColor.Get(ImGuiColors.DalamudGrey, ImGuiColors.DalamudGrey3, 500), $"已暂停");
         }
         if(C.MultiModeUIBar)
         {
             ImGui.SameLine();
-            if(ImGui.Checkbox("MultiMode", ref MultiMode.Enabled))
+            if(ImGui.Checkbox("多角色模式", ref MultiMode.Enabled))
             {
                 MultiMode.OnMultiModeEnabled();
                 if(MultiMode.Active)
@@ -87,7 +87,7 @@ internal unsafe class RetainerListOverlay : Window
         {
             Svc.Commands.ProcessCommand("/ays");
         }
-        ImGuiEx.Tooltip("Open Plugin Settings");
+        ImGuiEx.Tooltip("开启插件设置");
         if(!P.TaskManager.IsBusy)
         {
             ImGui.SameLine();
@@ -115,13 +115,13 @@ internal unsafe class RetainerListOverlay : Window
                         }
                         else
                         {
-                            Notify.Error($"No entrust plan found for retainer {ret.Name}");
+                            Notify.Error($"未找到雇员 {ret.Name} 的存放计划");
                         }
 
                     }
                 }
             }
-            ImGuiEx.Tooltip("Quick Entrust");
+            ImGuiEx.Tooltip("快速存放");
 
             ImGui.SameLine();
             if(ImGuiEx.IconButton($"{FontAwesomeIcon.ArrowRightToBracket.ToIconString()}##EntrustManually"))
@@ -155,7 +155,7 @@ internal unsafe class RetainerListOverlay : Window
                                     }
                                     else
                                     {
-                                        Notify.Warning("No items in inventory to entrust");
+                                        Notify.Warning("背包中没有可存放的物品");
                                     }
                                 }
                             }
@@ -165,7 +165,7 @@ internal unsafe class RetainerListOverlay : Window
                 }
                 ImGui.EndPopup();
             }
-            ImGuiEx.Tooltip("Run a specific entrust plan");
+            ImGuiEx.Tooltip("运行指定的存放计划");
 
             ImGui.SameLine();
             if(ImGuiEx.IconButton($"{FontAwesomeIcon.ArrowRightFromBracket.ToIconString()}##ReverseEntrust"))
@@ -202,7 +202,7 @@ internal unsafe class RetainerListOverlay : Window
                 }
                 ImGui.EndPopup();
             }
-            ImGuiEx.Tooltip("Reverse run a specific entrust plan (withdraw items according to entrust plan from retainers)");
+            ImGuiEx.Tooltip("反向运行指定的存放计划（根据存放计划从雇员处取回物品）");
 
             ImGui.SameLine();
             if(ImGuiEx.IconButton($"{Lang.IconGil}##WithdrawGil"))
@@ -223,7 +223,7 @@ internal unsafe class RetainerListOverlay : Window
                     }
                 }
             }
-            ImGuiEx.Tooltip("Quick Withdraw Gil");
+            ImGuiEx.Tooltip("快速提取金币");
 
             {
                 ImGui.SameLine();
@@ -235,10 +235,10 @@ internal unsafe class RetainerListOverlay : Window
                 {
                     ImGui.OpenPopup("QuickVendorPopup");
                 }
-                ImGuiEx.Tooltip("Quick Vendor Items");
+                ImGuiEx.Tooltip("快速出售物品");
                 if(ImGui.BeginPopup("QuickVendorPopup"))
                 {
-                    if(ImGui.Selectable("Sell items from Quick Venture List"))
+                    if(ImGui.Selectable("从筹备物资清单中出售物品"))
                     {
                         for(var i = 0; i < GameRetainerManager.Count; i++)
                         {

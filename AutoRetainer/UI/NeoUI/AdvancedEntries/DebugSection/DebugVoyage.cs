@@ -27,16 +27,16 @@ internal unsafe class DebugVoyage : DebugSectionBase
                         ImGuiEx.Text($"{x.Name.Read()}/{x.ReturnTime}/{x.CurrentExplorationPoints.ToArray().Print()}");
                     }
                 }
-                if(ImGui.Button("Erase offline data"))
+                if(ImGui.Button("清除离线数据"))
                 {
                     Data.OfflineAirshipData.Clear();
                     Data.OfflineSubmarineData.Clear();
                 }
-                if(ImGui.Button("Repair 1")) VoyageScheduler.TryRepair(0);
-                if(ImGui.Button("Repair 2")) VoyageScheduler.TryRepair(1);
-                if(ImGui.Button("Repair 3")) VoyageScheduler.TryRepair(2);
-                if(ImGui.Button("Repair 4")) VoyageScheduler.TryRepair(3);
-                if(ImGui.Button("Close repair")) VoyageScheduler.CloseRepair();
+                if(ImGui.Button("修理 1")) VoyageScheduler.TryRepair(0);
+                if(ImGui.Button("修理 2")) VoyageScheduler.TryRepair(1);
+                if(ImGui.Button("修理 3")) VoyageScheduler.TryRepair(2);
+                if(ImGui.Button("修理 4")) VoyageScheduler.TryRepair(3);
+                if(ImGui.Button("关闭维修界面")) VoyageScheduler.CloseRepair();
                 //if (ImGui.Button("Trigger auto repair")) TaskRepairAll.EnqueueImmediate();
                 ImGui.InputText("data1", ref data1, 50);
                 ImGuiEx.EnumCombo("data2", ref data2);
@@ -77,7 +77,7 @@ internal unsafe class DebugVoyage : DebugSectionBase
                     var button = addon->UldManager.NodeList[3]->GetAsAtkComponentButton();
                     ImGuiEx.Text($"Button: {button->IsEnabled}");
                 }
-                if(ImGui.Button("Interact with nearest panel"))
+                if(ImGui.Button("与最近的界面互动"))
                 {
                     TaskInteractWithNearestPanel.Enqueue();
                 }
@@ -101,16 +101,16 @@ internal unsafe class DebugVoyage : DebugSectionBase
                     ImGuiEx.Text($"BridgeId: {CurrentSubmarine.Get()->BridgeId}");
                     ImGuiEx.Text($"BowId: {CurrentSubmarine.Get()->BowId}");
                     ImGuiEx.Text($"RankId: {CurrentSubmarine.Get()->RankId}");
-                    if(ImGui.Button("Print best exp"))
+                    if(ImGui.Button("打印最佳经验"))
                     {
                         CurrentSubmarine.GetBestExps();
                     }
-                    if(ImGui.Button("Select best path"))
+                    if(ImGui.Button("选择最佳航线"))
                     {
                         TaskCalculateAndPickBestExpRoute.Enqueue();
                     }
-                    ImGuiEx.Text($"Points: {CurrentSubmarine.Get()->CurrentExplorationPoints.ToArray().Print()}");
-                    ImGuiEx.Text($"Points: {CurrentSubmarine.Get()->CurrentExplorationPoints.ToArray().Select(x => VoyageUtils.GetSubmarineExplorationName(x)).Print()}");
+                    ImGuiEx.Text($"点数: {CurrentSubmarine.Get()->CurrentExplorationPoints.ToArray().Print()}");
+                    ImGuiEx.Text($"点数: {CurrentSubmarine.Get()->CurrentExplorationPoints.ToArray().Select(x => VoyageUtils.GetSubmarineExplorationName(x)).Print()}");
                 }
             }
             catch(Exception e)
@@ -142,15 +142,15 @@ internal unsafe class DebugVoyage : DebugSectionBase
                 }
             }
         }
-        if(ImGui.CollapsingHeader("utils"))
+        if(ImGui.CollapsingHeader("工具"))
         {
             ImGui.InputInt("r1", ref r1);
-            if(ImGui.Button("Pick"))
+            if(ImGui.Button("选择"))
             {
                 P.Memory.SelectRoutePointUnsafe(r1);
             }
         }
-        if(ImGui.CollapsingHeader("control"))
+        if(ImGui.CollapsingHeader("控制"))
         {
             if(ImGui.Button($"{nameof(VoyageScheduler.Lockon)}")) DuoLog.Information($"{VoyageScheduler.Lockon()}");
             if(ImGui.Button($"{nameof(VoyageScheduler.Approach)}")) DuoLog.Information($"{VoyageScheduler.Approach()}");
@@ -158,7 +158,7 @@ internal unsafe class DebugVoyage : DebugSectionBase
             if(ImGui.Button($"{nameof(VoyageScheduler.InteractWithVoyagePanel)}")) DuoLog.Information($"{VoyageScheduler.InteractWithVoyagePanel()}");
             if(ImGui.Button($"{nameof(VoyageScheduler.SelectAirshipManagement)}")) DuoLog.Information($"{VoyageScheduler.SelectAirshipManagement()}");
             if(ImGui.Button($"{nameof(VoyageScheduler.SelectSubManagement)}")) DuoLog.Information($"{VoyageScheduler.SelectSubManagement()}");
-            ImGui.InputText("subject name", ref data1, 100);
+            ImGui.InputText("主题名称", ref data1, 100);
             if(ImGui.Button($"{nameof(VoyageScheduler.SelectVesselByName)}")) DuoLog.Information($"{VoyageScheduler.SelectVesselByName(data1, VoyageType.Submersible)}");
             if(ImGui.Button($"{nameof(VoyageScheduler.RedeployVessel)}")) DuoLog.Information($"{VoyageScheduler.RedeployVessel()}");
             if(ImGui.Button($"{nameof(VoyageScheduler.DeployVessel)}")) DuoLog.Information($"{VoyageScheduler.DeployVessel()}");
@@ -166,9 +166,9 @@ internal unsafe class DebugVoyage : DebugSectionBase
             //if (ImGui.Button($"{nameof(TaskDeployOnBestExpVoyage)}")) TaskDeployOnBestExpVoyage.Enqueue();
             if(ImGui.Button($"{nameof(VoyageScheduler.Approach)}")) DuoLog.Information($"{VoyageScheduler.Approach}");
         }
-        if(ImGui.CollapsingHeader("Test task manager"))
+        if(ImGui.CollapsingHeader("测试任务管理器"))
         {
-            if(ImGui.Button("Test redeploy airship"))
+            if(ImGui.Button("测试重新部署飞空艇"))
             {
                 P.TaskManager.Enqueue(VoyageScheduler.Lockon);
                 P.TaskManager.Enqueue(VoyageScheduler.Approach);

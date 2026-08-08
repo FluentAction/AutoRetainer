@@ -21,15 +21,15 @@ public sealed class VentureStatsManager
         {
             Load();
         }
-        if(ImGui.Button("Reload"))
+        if(ImGui.Button("重新载入"))
         {
             Load();
         }
         ImGui.SameLine();
-        ImGui.Checkbox("Show HQ and non-HQ together", ref C.StatsUnifyHQ);
+        ImGui.Checkbox("合并显示HQ与NQ物品", ref C.StatsUnifyHQ);
         ImGui.SameLine();
         ImGuiEx.SetNextItemFullWidth();
-        ImGui.InputTextWithHint("##search", "Filter items...", ref Filter, 100);
+        ImGui.InputTextWithHint("##search", "筛选物品...", ref Filter, 100);
         var cindex = 0;
         foreach(var cData in Data)
         {
@@ -101,7 +101,7 @@ public sealed class VentureStatsManager
         catch(Exception e)
         {
             e.Log();
-            Notify.Error($"Error: {e.Message}");
+            Notify.Error($"错误: {e.Message}");
         }
     }
 

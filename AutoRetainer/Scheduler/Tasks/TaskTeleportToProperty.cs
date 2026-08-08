@@ -84,12 +84,12 @@ public static class TaskTeleportToProperty
                     {
                         if(!Svc.ClientState.IsLoggedIn)
                         {
-                            PluginLog.Warning($"Logout while waiting to return to home; expecting DC travel. Aborting and waiting for relogging.");
+                            PluginLog.Warning($"等待返回房屋时登出；预期跨数据中心传送。已中止并等待重新登录。");
                             return null;
                         }
                         if(Player.Interactable && Lifestream.HasApartment() == false)
                         {
-                            PluginLog.Warning("Upon returning home, apartment not found. Aborting and retrying.");
+                            PluginLog.Warning("返回房屋时未找到公寓，正在中止并重试。");
                             return null;
                         }
                         return IsScreenReady() && Player.Interactable && Apartments.Contains(Player.Territory) && !Lifestream.IsBusy();
@@ -105,7 +105,7 @@ public static class TaskTeleportToProperty
                 {
                     if(!Svc.ClientState.IsLoggedIn)
                     {
-                        PluginLog.Warning($"Logout while waiting to return to home; expecting DC travel. Aborting and waiting for relogging.");
+                        PluginLog.Warning($"等待返回房屋时登出；预期跨数据中心传送。已中止并等待重新登录。");
                         return null;
                     }
                     return IsScreenReady() && Player.Interactable && Inns.List.Contains((ushort)Player.Territory) && !Lifestream.IsBusy();
@@ -162,7 +162,7 @@ public static class TaskTeleportToProperty
             {
                 if(!Svc.ClientState.IsLoggedIn)
                 {
-                    PluginLog.Warning($"Logout while waiting to return to home; expecting DC travel. Aborting and waiting for relogging.");
+                    PluginLog.Warning($"等待返回房屋时登出；预期跨数据中心传送。已中止并等待重新登录。");
                     return null;
                 }
                 return Player.Interactable
@@ -201,7 +201,7 @@ public static class TaskTeleportToProperty
             {
                 if(!Svc.ClientState.IsLoggedIn)
                 {
-                    PluginLog.Warning($"Logout while waiting to return to home; expecting DC travel. Aborting and waiting for relogging.");
+                    PluginLog.Warning($"等待返回房屋时登出；预期跨数据中心传送。已中止并等待重新登录。");
                     return null;
                 }
                 return Player.Interactable

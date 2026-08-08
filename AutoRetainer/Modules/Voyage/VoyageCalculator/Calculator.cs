@@ -116,7 +116,7 @@ internal unsafe class Calculator
         }
         catch(Exception e)
         {
-            PluginLog.Error($"Error calculating best path");
+            PluginLog.Error($"计算最佳航线时出错");
             e.Log();
         }
         return null;

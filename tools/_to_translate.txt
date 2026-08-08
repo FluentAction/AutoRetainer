@@ -1,0 +1,485 @@
+=== 词典存在但未翻译(key==value): 350 条 ===
+[6] 'Affected {} submarines'  # UI\NeoUI\DeployablesTab.cs
+[6] 'Affected {} characters'  # UI\NeoUI\DeployablesTab.cs, UI\NeoUI\RetainersTab.cs
+[4] 'Logout while waiting to return to home; expecting DC travel. Aborting and waiting for relogging.'  # Scheduler\Tasks\TaskTeleportToProperty.cs
+[4] 'Changed {} retainers'  # UI\MainWindow\MultiModeTab\RetainerConfig.cs
+[4] 'Affected {} retainers'  # UI\NeoUI\RetainersTab.cs
+[3] 'Debug'  # UI\MainWindow\MultiModeTab\MultiModeUI.cs, UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs, UI\Windows\VenturePlanner.cs
+[3] ' true'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugArtisan.cs
+[3] ' false'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugArtisan.cs
+[2] 'Failed to find suitable house'  # AutoRetainer.cs
+[2] 'AutoRetainer is busy or player is occupied.'  # AutoRetainer.cs
+[2] '... {} more ...'  # Helpers\VentureUtils.cs
+[2] '{} - {} Configuration  ##conf'  # UI\MainWindow\MultiModeTab\RetainerConfig.cs, UI\MainWindow\WorkshopUI.cs
+[2] 'Add'  # UI\NeoUI\DeployablesTab.cs
+[2] 'CloseRetainerInventory'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[2] 'Points: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[2] 'Used by {} characters in total'  # UI\NeoUI\InventoryManagementEntries\GCDeliveryEntries\ExchangeLists.cs, UI\NeoUI\InventoryManagementEntries\InventoryCleanupEntries\InventoryCleanupCommon.cs
+[2] 'You are required to enable this function globally as well in order for it to work.'  # UI\NeoUI\MultiModeEntries\CharaOrder.cs
+[2] 'This plan is used by {}.'  # UI\Windows\SubmarinePointPlanUI.cs, UI\Windows\SubmarineUnlockPlanUI.cs
+[2] 'This plan is used by {} submersibles of your other characters.'  # UI\Windows\SubmarinePointPlanUI.cs, UI\Windows\SubmarineUnlockPlanUI.cs
+[2] 'This plan is used by {} and {} more submersibles on other characters.'  # UI\Windows\SubmarinePointPlanUI.cs, UI\Windows\SubmarineUnlockPlanUI.cs
+[2] 'Could not import plan: {}'  # UI\Windows\SubmarinePointPlanUI.cs, UI\Windows\SubmarineUnlockPlanUI.cs
+[1] 'Using custom FFXIVClientStructs'  # AutoRetainer.cs
+[1] 'Could not find target character'  # AutoRetainer.cs
+[1] 'Failed to enter workshop'  # AutoRetainer.cs
+[1] 'No valid housing NPC or retainer bell were found, or AutoRetainer is busy, or sale function is disabled'  # AutoRetainer.cs
+[1] 'Glamour Log plugin is required for this function.'  # AutoRetainer.cs
+[1] "Timer can't be less than 10 seconds"  # AutoRetainer.cs
+[1] 'External addition to soft vendor list: {}'  # AutoRetainer.cs
+[1] 'External removal from soft vendor list: {}'  # AutoRetainer.cs
+[1] 'Reset completed'  # AutoRetainer.cs
+[1] 'Open bell action cancelled'  # AutoRetainer.cs
+[1] 'Lifestream plugin is not installed or not enabled. You have to install and enable it in order for {} to work. Click here if you would like to open an instruction on how to do so.'  # Helpers\Utils.cs
+[1] 'Requested discard of slot {}[{}], item {}, is protected, can not discard'  # Helpers\Utils.cs
+[1] 'Would discard {} {} x{}, {}[{}]'  # Helpers\Utils.cs
+[1] 'Requested discard of slot {}[{}], expected item {}, contained {}, can not discard'  # Helpers\Utils.cs
+[1] 'The venture list is too large to show preview.'  # Helpers\VentureUtils.cs
+[1] 'Progress: {}/{}'  # Helpers\VentureUtils.cs
+[1] 'Hold both CTRL+SHIFT while clicking to remove protection from item'  # Internal\ContextMenuManager.cs
+[1] 'Item {} removed from Quick Venture sell list'  # Internal\ContextMenuManager.cs
+[1] 'Item {} added to Quick Venture sell list'  # Internal\ContextMenuManager.cs
+[1] 'Item {} removed from Unconditional sell list'  # Internal\ContextMenuManager.cs
+[1] 'Item {} added to Unconditional sell list'  # Internal\ContextMenuManager.cs
+[1] 'Item {} removed from Discard list'  # Internal\ContextMenuManager.cs
+[1] 'Item {} added to Discard list'  # Internal\ContextMenuManager.cs
+[1] '{} added to protection list'  # Internal\ContextMenuManager.cs
+[1] 'Could not acquire lock.'  # Internal\FFXIVInstanceMonitor.cs
+[1] 'Requested inventory slot {}({}) had no item in it to sell.'  # Internal\Memory.cs
+[1] 'Inventory {} is null'  # Internal\InventoryManagement\InventorySpaceManager.cs
+[1] "Item {} is protected and won't be sold."  # Internal\InventoryManagement\InventorySpaceManager.cs
+[1] 'Slot contains different item {}x{}, should be {}'  # Internal\InventoryManagement\InventorySpaceManager.cs
+[1] 'Could not find retainer inventory'  # Internal\InventoryManagement\InventorySpaceManager.cs
+[1] 'AgentRetainer is not active'  # Internal\InventoryManagement\InventorySpaceManager.cs
+[1] '> IMDry > Would sell slot {}'  # Internal\InventoryManagement\InventorySpaceManager.cs
+[1] '[Bailout] Closing stuck SelectString window'  # Modules\BailoutManager.cs
+[1] '[Bailout] Backing out of CharaSelect'  # Modules\BailoutManager.cs
+[1] 'Unsafe option removed: character {} - {}'  # Modules\Safety.cs
+[1] "Don't use GetGCInfo IPC method, it is now obsolete."  # Modules\EzIPCManagers\IPC_GCContinuation.cs
+[1] '[ARERRCMM] Character mismatch, expected {}, but logged in on {}. Please report this to developer unless you have manually interfered with login process'  # Modules\Multi\MultiMode.cs
+[1] 'Multi mode disabled as it have detected duplicate login.'  # Modules\Multi\MultiMode.cs
+[1] 'Could not shutdown the game normally, forcing exit'  # Modules\Multi\MultiMode.cs
+[1] 'Error while automatically logging in: {}'  # Modules\Multi\MultiMode.cs
+[1] 'Too many errors, current character is excluded.'  # Modules\Multi\MultiMode.cs
+[1] 'Fatal error. Please report this with logs.'  # Modules\Multi\MultiMode.cs
+[1] 'Due to absence of retainer bell and failure to find workshop, character is excluded from processing retainers'  # Modules\Multi\MultiMode.cs
+[1] 'Preferred character has been reset'  # Modules\Multi\MultiMode.cs
+[1] 'Error during auto login: {}'  # Modules\Multi\MultiMode.cs
+[1] '[Voyage] You are out of repair components!'  # Modules\Voyage\VoyageMain.cs
+[1] 'No operation was requested by user'  # Modules\Voyage\VoyageMain.cs
+[1] 'Warning!\nDeployables were not enabled as there are nothing to process yet'  # Modules\Voyage\VoyageMain.cs
+[1] 'Invalid plan selected (Points.Count={})'  # Modules\Voyage\VoyageMain.cs
+[1] 'Item id for airship component was 0 ({})'  # Modules\Voyage\VoyageUtils.cs
+[1] 'Critical error occurred during path optimization: {}'  # Modules\Voyage\Tasks\TaskCalculateAndPickBestExpRoute.cs
+[1] 'Due to failure to find workshop, character is excluded from processing deployables'  # Modules\Voyage\Tasks\TaskInteractWithNearestPanel.cs
+[1] 'Invalid map index specified (specified {}, max {})'  # Modules\Voyage\Tasks\TaskPickSubmarineRoute.cs
+[1] '[Voyage] You are out of fuel!'  # Modules\Voyage\Tasks\TaskRedeployPreviousLog.cs
+[1] 'Error calculating best path'  # Modules\Voyage\VoyageCalculator\Calculator.cs
+[1] 'Calculating optimized path. Please wait.'  # Modules\Voyage\VoyageCalculator\WaitOverlay.cs
+[1] 'This can take several minutes.'  # Modules\Voyage\VoyageCalculator\WaitOverlay.cs
+[1] 'Hide this overlay'  # Modules\Voyage\VoyageCalculator\WaitOverlay.cs
+[1] 'Your inventory is full'  # Scheduler\SchedulerMain.cs
+[1] 'Enforcing {} '  # Scheduler\Handlers\RetainerHandlers.cs
+[1] 'Can not find venture id {} [{}] in list {}'  # Scheduler\Handlers\RetainerHandlers.cs
+[1] 'Not employed by a Grand Company'  # Scheduler\Tasks\TaskDeliverItems.cs
+[1] 'Can not enqueue GC delivery as it is disabled for current character'  # Scheduler\Tasks\TaskDeliverItems.cs
+[1] 'Lifestream is busy'  # Scheduler\Tasks\TaskDeliverItems.cs
+[1] 'AutoRetainer is busy'  # Scheduler\Tasks\TaskDeliverItems.cs
+[1] 'Desynthing {} [Container={},Slot={}]'  # Scheduler\Tasks\TaskDesynthItems.cs
+[1] 'Upon returning home, apartment not found. Aborting and retrying.'  # Scheduler\Tasks\TaskTeleportToProperty.cs
+[1] 'Published and developed with '  # UI\CustomAboutTab.cs
+[1] ' by Puni.sh and NightmareXIV'  # UI\CustomAboutTab.cs
+[1] 'Join our Discord community for project announcements, updates, and support.'  # UI\CustomAboutTab.cs
+[1] 'Discord'  # UI\CustomAboutTab.cs
+[1] 'Repository'  # UI\CustomAboutTab.cs
+[1] 'Link copied to clipboard'  # UI\CustomAboutTab.cs
+[1] 'Source Code'  # UI\CustomAboutTab.cs
+[1] 'Donate to Puni.sh platform'  # UI\CustomAboutTab.cs
+[1] '\uf0ac'  # UI\UIUtils.cs
+[1] '\uf1ad'  # UI\UIUtils.cs
+[1] 'Free company house is registered in Lifestream and path is set. You will be teleported to Free company house for resending Deployables. If enabled, you will be teleported to Free company house for resending retainers as well.\nAddress: {}, ward {}, plot {}'  # UI\UIUtils.cs
+[1] '\ue1b0'  # UI\UIUtils.cs
+[1] 'Private house is registered in Lifestream and path is set. You will be teleported to Private house for resending Retainers.\nAddress: {}, ward {}, plot {}'  # UI\UIUtils.cs
+[1] '\ue4fe'  # UI\UIUtils.cs
+[1] '\uf004'  # UI\UIUtils.cs
+[1] 'Unlimited'  # UI\UIUtils.cs
+[1] 'Enable {}'  # UI\MainWindow\AutoRetainerWindow.cs
+[1] 'Abort {} tasks'  # UI\MainWindow\AutoRetainerWindow.cs
+[1] 'Service Account {}'  # UI\MainWindow\SharedUI.cs
+[1] 'Inn cutscene skip module is set to {}. Inn cutscene will be skipped by AutoRetainer.'  # UI\MainWindow\TroubleshootingUI.cs
+[1] 'Multi Mode expert delivery free inventory slot trigger value is set to {} while submersible module is enabled. It is recommended to set it to at least 50 to avoid inventory overflow issues.'  # UI\MainWindow\TroubleshootingUI.cs
+[1] 'Some of your multi-mode enabled characters have {} retainers enabled, and Multi Mode expert delivery free inventory slot trigger value is set to {}. It is strongly recommended that you set it to at least {} (5 slots per retainer).'  # UI\MainWindow\TroubleshootingUI.cs
+[1] 'Character {} has duplicate submersible names. Submersible names must be unique.'  # UI\MainWindow\TroubleshootingUI.cs
+[1] 'Submarine unlock plan {} is set as enforced and will override any submarine settings if there is anything to unlock.'  # UI\MainWindow\TroubleshootingUI.cs
+[1] 'Submarine unlock plan {} is set to deploy on single point in Deep sea site, and it will ignore unlock behavior that is manually set.'  # UI\MainWindow\TroubleshootingUI.cs
+[1] 'Your MultiMode type is set to {}. This will limit functions that AutoRetainer will perform.'  # UI\MainWindow\TroubleshootingUI.cs
+[1] '\uf057'  # UI\MainWindow\TroubleshootingUI.cs
+[1] '\uf071'  # UI\MainWindow\TroubleshootingUI.cs
+[1] '\uf05a'  # UI\MainWindow\TroubleshootingUI.cs
+[1] 'Expert setting "{}" differs from default'  # UI\MainWindow\TroubleshootingUI.cs
+[1] 'Default is "{}", current is "{}".'  # UI\MainWindow\TroubleshootingUI.cs
+[1] 'You can construct new submersible ({}/{})'  # UI\MainWindow\WorkshopUI.cs
+[1] 'WorkshopUI planner button'  # UI\MainWindow\WorkshopUI.cs
+[1] 'Public debug'  # UI\MainWindow\WorkshopUI.cs
+[1] "Repair {} submarine's broken components"  # UI\MainWindow\WorkshopUI.cs
+[1] 'Currently executing: {}'  # UI\MainWindow\WorkshopUI.cs
+[1] 'Index override: {}'  # UI\MainWindow\WorkshopUI.cs
+[1] 'Moved data from {} to {}'  # UI\MainWindow\WorkshopUI.cs
+[1] 'Entrust plan "{}" is active.'  # UI\MainWindow\MultiModeTab\RetainerTable.cs
+[1] 'NOT'  # UI\NeoUI\DeployablesTab.cs
+[1] 'Build (1)'  # UI\NeoUI\DeployablesTab.cs
+[1] 'Build (2)'  # UI\NeoUI\DeployablesTab.cs
+[1] 'Build (3)'  # UI\NeoUI\DeployablesTab.cs
+[1] 'Build (4)'  # UI\NeoUI\DeployablesTab.cs
+[1] 'Level (1)'  # UI\NeoUI\DeployablesTab.cs
+[1] 'Level (2)'  # UI\NeoUI\DeployablesTab.cs
+[1] 'Level (3)'  # UI\NeoUI\DeployablesTab.cs
+[1] 'Level (4)'  # UI\NeoUI\DeployablesTab.cs
+[1] 'Route (1)'  # UI\NeoUI\DeployablesTab.cs
+[1] 'Route (2)'  # UI\NeoUI\DeployablesTab.cs
+[1] 'Route (3)'  # UI\NeoUI\DeployablesTab.cs
+[1] 'Route (4)'  # UI\NeoUI\DeployablesTab.cs
+[1] 'Different setup for first Submersible###firstSubDifferent{}'  # UI\NeoUI\DeployablesTab.cs
+[1] 'Delete##{}'  # UI\NeoUI\DeployablesTab.cs
+[1] 'Number of columns'  # UI\NeoUI\LoginOverlay.cs
+[1] 'Overlay height, %'  # UI\NeoUI\LoginOverlay.cs
+[1] 'Allow operating on retainers without a job'  # UI\NeoUI\AdvancedEntries\ExpertTab.cs
+[1] 'RestainerList'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugAddonMaster.cs
+[1] '_TitleMenu'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugAddonMaster.cs
+[1] 'Start'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugAddonMaster.cs
+[1] 'DataCenter'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugAddonMaster.cs
+[1] 'Exit'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugAddonMaster.cs
+[1] 'TitleDCWorldMap'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugAddonMaster.cs
+[1] '_CharaSelectWorldServer'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugAddonMaster.cs
+[1] '_CharaSelectListMenu'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugAddonMaster.cs
+[1] 'World##w'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugAddonMaster.cs
+[1] 'Selected'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugAddonMaster.cs
+[1] 'Deliver items'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugCabinet.cs
+[1] 'EnqueueGoToInnAndDeliverEverything'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugCabinet.cs
+[1] 'Expert items'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugGCAuto.cs
+[1] 'EnqueueInitiation'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugGCAuto.cs
+[1] 'EnqueueExchangeClose'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugGCAuto.cs
+[1] 'Step on'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugGCAuto.cs
+[1] 'Step off'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugGCAuto.cs
+[1] 'Step'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugGCAuto.cs
+[1] 'GrandCompanySupplyList'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugGCAuto.cs
+[1] 'GrandCompanyExchange'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugGCAuto.cs
+[1] 'API Test'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugIPC.cs
+[1] 'Suppress = true'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugIPC.cs
+[1] 'Suppress = false'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugIPC.cs
+[1] 'Inventories'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugInventoryManagement.cs
+[1] 'Shop Sell test'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugInventoryManagement.cs
+[1] 'type'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugInventoryManagement.cs
+[1] 'Slot'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugInventoryManagement.cs
+[1] 'Sell'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugInventoryManagement.cs
+[1] 'Enqueue if present'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugInventoryManagement.cs
+[1] 'Interact with target'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugInventoryManagement.cs
+[1] 'Vendor list'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugInventoryManagement.cs
+[1] 'Move stuck detection'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'AddonOpenedAt'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'ApiTest1'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Telelport'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'AskEligibility'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'FreeCompanyAction'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'On FreeCompany'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'On FreeCompanyAction'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'TaskActivateSealSweetener.Enqueue'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'TaskActivateSealSweetener.EnqueueThrottled'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'CMenu'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Retainer item stats'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Test Haseltweaks'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Write config via external process'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Housing'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Simulate login'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Install callback hook'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Disable callback hook'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Log opcodes'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Test entrust dup'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Chill frames lock'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Unlock frames lock'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Level array:'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Regenerate censor seed'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Task debug'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Generate random numbers 1/500'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Generate random numbers 1/5000'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Generate random numbers 1/100'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Fire'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Sorted data'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'NeoHET'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Enqueue HET'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Enqueue workshop'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Fail'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Tasks'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'TestAutomoveTask'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'TestInteractTask'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'TestBoth'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] "Don't logout"  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Force mismatch'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Simulate nothing left'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Simulate autostart'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Delete was loaded data'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'HET'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Enter house'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Estate territories'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Bypass sanctuary check'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'CharaSelect'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'path'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugNMAPI.cs
+[1] 'repeat'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugNMAPI.cs
+[1] 'stopOnFocus'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugNMAPI.cs
+[1] 'Flash'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugNMAPI.cs
+[1] 'msg'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugNMAPI.cs
+[1] 'msg no title'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugNMAPI.cs
+[1] 'play sound'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugNMAPI.cs
+[1] 'stop sound'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugNMAPI.cs
+[1] 'BeginNewPurchase'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugNeoGCDelivery.cs
+[1] 'Run task'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugReader.cs
+[1] 'vid'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugRetainerTaskSupply.cs
+[1] 'OpenAssignVentureWindow'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugRetainerTaskSupply.cs
+[1] 'TaskWithdrawGil.forceCheck'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'SelectAssignVenture'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'SelectQuit'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'SelectViewVentureReport'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'ClickResultReassign'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'ClickResultConfirm'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'ClickAskAssign'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'SelectQuickExploration'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'SelectEntrustItems'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'SelectEntrustGil'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'ClickEntrustDuplicates'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'ClickEntrustDuplicatesConfirm'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'ClickCloseEntrustWindow'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'SetWithdrawGilAmount (1%)'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'SetWithdrawGilAmount (50%)'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'SetWithdrawGilAmount (99%)'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'SetWithdrawGilAmount (100%)'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'WithdrawGilOrCancel'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'WithdrawGilOrCancel (force cancel)'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'SwapBankMode'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'SetDepositGilAmount (1%)'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'SetDepositGilAmount (50%)'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'SetDepositGilAmount (99%)'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'SetDepositGilAmount (100%)'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'TaskAssignQuickVenture'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'TaskReassignVenture'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'TaskWithdrawGil (50%)'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'Retainer name'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'Select retainer by name'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'AtkStage get focus'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'AtkStage clear focus'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'Try retrieve current retainer name'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'Try close'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'test bank'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'TaskDesynthItems'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'Venture id'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVenture.cs
+[1] 'Venture name'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVenture.cs
+[1] 'Clear Venture list'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVenture.cs
+[1] 'SelectSpecificVenture Name'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVenture.cs
+[1] 'TaskAssignHuntingVenture'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVenture.cs
+[1] 'TaskAssignFieldExploration'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVenture.cs
+[1] 'Select'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVenture.cs
+[1] 'GetAvailableVentureNames'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVenture.cs
+[1] 'data1'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'data2'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'IsVesselNeedsRepair'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'GetSubmarineIndexByName'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Interact with nearest panel'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'data'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Print best exp'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'utils'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'r1'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Pick'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'control'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'subject name'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Test task manager'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Test redeploy airship'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Data Not Ready'  # UI\NeoUI\AdvancedEntries\DebugSection\RetainersOld.cs
+[1] 'Inventory slots: '  # UI\NeoUI\AdvancedEntries\DebugSection\RetainersOld.cs
+[1] '|'  # UI\NeoUI\AdvancedEntries\DebugSection\RetainersOld.cs
+[1] 'Ventures: '  # UI\NeoUI\AdvancedEntries\DebugSection\RetainersOld.cs
+[1] 'Added {} to entrust plan {}'  # UI\NeoUI\InventoryManagementEntries\EntrustManager.cs
+[1] 'Removed {} from entrust plan {}'  # UI\NeoUI\InventoryManagementEntries\EntrustManager.cs
+[1] 'Selected {} items, among which {} already present in list###counter'  # UI\NeoUI\InventoryManagementEntries\InventoryManagementCommon.cs
+[1] 'Exclude {}##item'  # UI\NeoUI\InventoryManagementEntries\GCDeliveryEntries\GeneralSettings.cs
+[1] 'Exclude {}'  # UI\NeoUI\InventoryManagementEntries\GCDeliveryEntries\GeneralSettings.cs
+[1] 'Added {} to Quick Venture Sell List'  # UI\NeoUI\InventoryManagementEntries\InventoryCleanupEntries\FastAddition.cs
+[1] 'Added {} to Unconditional Sell List'  # UI\NeoUI\InventoryManagementEntries\InventoryCleanupEntries\FastAddition.cs
+[1] 'Added {} to Discard List'  # UI\NeoUI\InventoryManagementEntries\InventoryCleanupEntries\FastAddition.cs
+[1] 'Removed {} from Quick Venture Sell List'  # UI\NeoUI\InventoryManagementEntries\InventoryCleanupEntries\FastAddition.cs
+[1] 'Removed {} from Unconditional Sell List'  # UI\NeoUI\InventoryManagementEntries\InventoryCleanupEntries\FastAddition.cs
+[1] 'Removed {} from Discard List'  # UI\NeoUI\InventoryManagementEntries\InventoryCleanupEntries\FastAddition.cs
+[1] 'Removed {} from Desynthesis List'  # UI\NeoUI\InventoryManagementEntries\InventoryCleanupEntries\FastAddition.cs
+[1] 'Deliver eligible items into Armoire when in Multi Mode'  # UI\NeoUI\InventoryManagementEntries\InventoryCleanupEntries\GeneralSettings.cs
+[1] 'Items that are not in Armoire will be delivered there. Eligible items also will be excluded from being discarded, desynthesed, entrusted to retainers or delivered into grand company (only while you are running multi mode). This will trigger before Multi Mode Expert Delivery.'  # UI\NeoUI\InventoryManagementEntries\InventoryCleanupEntries\GeneralSettings.cs
+[1] 'Deliver eligible items into glamour dresser while in Multi Mode (requires Glamour log plugin)'  # UI\NeoUI\InventoryManagementEntries\InventoryCleanupEntries\GeneralSettings.cs
+[1] 'Allow this character to use FC buffs'  # UI\NeoUI\MultiModeEntries\CharaOrder.cs
+[1] 'Allow this character to use priority seal allowance'  # UI\NeoUI\MultiModeEntries\CharaOrder.cs
+[1] 'Delete##bl{}'  # UI\NeoUI\MultiModeEntries\CharaOrder.cs
+[1] 'Delay, seconds'  # UI\NeoUI\MultiModeEntries\MultiModeCommon.cs
+[1] '~'  # UI\NeoUI\MultiModeEntries\MultiModeCommon.cs
+[1] 'Delay'  # UI\NeoUI\MultiModeEntries\MultiModeCommon.cs
+[1] 'Set appropriate delay to let plugins fully load before logging in and to allow yourself some time to cancel login if needed'  # UI\NeoUI\MultiModeEntries\MultiModeCommon.cs
+[1] "When enabled, AutoRetainer will wait for all deployables to return before logging into the character. If you're already logged in for another reason, it will still resend completed submarines—unless the global setting "  # UI\NeoUI\MultiModeEntries\MultiModeDeployables.cs
+[1] ' is also turned on.'  # UI\NeoUI\MultiModeEntries\MultiModeDeployables.cs
+[1] 'Changes the behavior of '  # UI\NeoUI\MultiModeEntries\MultiModeDeployables.cs
+[1] ' (both global and per-character) so that AutoRetainer no longer resends individual submarines while already logged in. Instead, it will wait until all submarines have returned before taking action.'  # UI\NeoUI\MultiModeEntries\MultiModeDeployables.cs
+[1] 'If waiting for other deployables to return would exceed this number of minutes, AutoRetainer will ignore both the '  # UI\NeoUI\MultiModeEntries\MultiModeDeployables.cs
+[1] ' and '  # UI\NeoUI\MultiModeEntries\MultiModeDeployables.cs
+[1] ' settings.'  # UI\NeoUI\MultiModeEntries\MultiModeDeployables.cs
+[1] 'Check frequency, hours'  # UI\NeoUI\MultiModeEntries\MultiModeDeployables.cs
+[1] 'Enable on {}'  # UI\NeoUI\MultiModeEntries\MultiModeDeployables.cs
+[1] 'Important: when activated, your multi mode will be set to do deployables only, no retainers.'  # UI\NeoUI\MultiModeEntries\MultiModeDeployables.cs
+[1] 'Maximum time to wait for sub return, minutes'  # UI\NeoUI\MultiModeEntries\MultiModeDeployables.cs
+[1] '{} items left'  # UI\Overlays\AutoGCHandinOverlay.cs
+[1] 'LoginCenter'  # UI\Overlays\LoginOverlay.cs
+[1] 'No entrust plan found for retainer {}'  # UI\Overlays\RetainerListOverlay.cs
+[1] 'No items in inventory to entrust'  # UI\Overlays\RetainerListOverlay.cs
+[1] 'Run a specific entrust plan'  # UI\Overlays\RetainerListOverlay.cs
+[1] 'Reverse run a specific entrust plan (withdraw items according to entrust plan from retainers)'  # UI\Overlays\RetainerListOverlay.cs
+[1] 'Last updated {}. Ctrl + click to reset'  # UI\Statistics\FcDataManager.cs
+[1] 'Last updated {}'  # UI\Statistics\FcDataManager.cs
+[1] 'TOTAL'  # UI\Statistics\FcDataManager.cs
+[1] '        Free Company {}: {}'  # UI\Statistics\GilDisplayManager.cs
+[1] 'Data center total ({}): {}'  # UI\Statistics\GilDisplayManager.cs
+[1] 'Overall total: {}'  # UI\Statistics\GilDisplayManager.cs
+[1] 'Error: {}'  # UI\Statistics\VentureStatsManager.cs
+[1] '{}{} {} | Gathering: {} ({}) | Perception: {} ({})'  # UI\Windows\VentureBrowser.cs
+[1] '{}{} {} | Item Level: {} ({})'  # UI\Windows\VentureBrowser.cs
+[1] 'To planner##{}'  # UI\Windows\VentureBrowser.cs
+[1] 'Check price##{}'  # UI\Windows\VentureBrowser.cs
+[1] 'Gather##{}'  # UI\Windows\VentureBrowser.cs
+[1] 'Plan {} saved!'  # UI\Windows\VenturePlanner.cs
+[1] '{}    Quick Exploration'  # UI\Windows\VenturePlanner.cs
+
+=== 词典完全缺失: 132 条 ===
+[2] '{charas.Select(x => x.NameWithWorldCensored).Print('  # UI\NeoUI\InventoryManagementEntries\GCDeliveryEntries\ExchangeLists.cs, UI\NeoUI\InventoryManagementEntries\InventoryCleanupEntries\InventoryCleanupCommon.cs
+[2] '{(cnt > 0 ? $'  # UI\NeoUI\InventoryManagementEntries\GCDeliveryEntries\GeneralSettings.cs
+[2] 'planbuttons'  # UI\Windows\SubmarinePointPlanUI.cs, UI\Windows\SubmarineUnlockPlanUI.cs
+[2] 'planbuttons2'  # UI\Windows\SubmarinePointPlanUI.cs, UI\Windows\SubmarineUnlockPlanUI.cs
+[1] 'Would change character to {data?.NameWithWorldCensored ?? '  # Modules\Multi\MultiMode.cs
+[1] '{} {overrideTitle ?? '  # UI\MainWindow\SharedUI.cs
+[1] '}##conf'  # UI\MainWindow\SharedUI.cs
+[1] '{plan.Points.Select(x => VoyageUtils.GetSubmarineExploration(x)?.FirstLetter()).Print('  # UI\MainWindow\WorkshopUI.cs
+[1] 'GetCurrentTargetCharacter: {}'  # UI\MainWindow\MultiModeTab\MultiModeUI.cs
+[1] 'IsCurrentCharacterDone: {}'  # UI\MainWindow\MultiModeTab\MultiModeUI.cs
+[1] 'NextInteraction: {}'  # UI\MainWindow\MultiModeTab\MultiModeUI.cs
+[1] 'EnsureCharacterValidity: {}'  # UI\MainWindow\MultiModeTab\MultiModeUI.cs
+[1] 'IsInteractionAllowed: {}'  # UI\MainWindow\MultiModeTab\MultiModeUI.cs
+[1] 'GetPreferredCharacter: {}'  # UI\MainWindow\MultiModeTab\MultiModeUI.cs
+[1] 'IsAllRetainersHaveMoreThan15Mins: {}'  # UI\MainWindow\MultiModeTab\MultiModeUI.cs
+[1] 'Target ?? Preferred: {}'  # UI\MainWindow\MultiModeTab\MultiModeUI.cs
+[1] 'LastLongin: {}'  # UI\MainWindow\MultiModeTab\MultiModeUI.cs
+[1] 'AnyRetainersAvailable: {}'  # UI\MainWindow\MultiModeTab\MultiModeUI.cs
+[1] 'IsAnySelectedRetainerFinishesWithin, 60: {}'  # UI\MainWindow\MultiModeTab\MultiModeUI.cs
+[1] 'IsAnySelectedRetainerFinishesWithin, 5*60: {}'  # UI\MainWindow\MultiModeTab\MultiModeUI.cs
+[1] 'Chatacter {}\n  GetNeededVentureAmount: {}'  # UI\MainWindow\MultiModeTab\MultiModeUI.cs
+[1] '{(parts.Level != 0 ? $'  # UI\MainWindow\MultiModeTab\RetainerTable.cs
+[1] '{(!ret.HasVenture ? '  # UI\MainWindow\MultiModeTab\RetainerTable.cs
+[1] 'Rank {}-{}, {(x.ConfigurationsInvert ? '  # UI\NeoUI\DeployablesTab.cs
+[1] '{points.Join('  # UI\NeoUI\DeployablesTab.cs
+[1] '\n            1. Create a backup by typing /justbackup, ensure it has succeeded and saved into a secure location.\n            2. Open your character list on FFXIV Lodestone.\n            '  # UI\NeoUI\AdvancedEntries\CharacterSync.cs
+[1] 'Ready: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugAddonMaster.cs
+[1] 'Retainer {}: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugArtisan.cs
+[1] '1m##{}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugArtisan.cs
+[1] '15s##{}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugArtisan.cs
+[1] 'NoSelectString: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugBailout.cs
+[1] 'LobbyStuck: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugBailout.cs
+[1] 'AutoMirage'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugCabinet.cs
+[1] 'MEnqueueGoToInnAndDeliverEverything'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugCabinet.cs
+[1] 'CanDeliverCabinet: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugCabinet.cs
+[1] 'Cached: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugCabinet.cs
+[1] 'GetGCSealMultiplier: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugGCAuto.cs
+[1] 'GetClosestRetainerVentureSecondsRemaining {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugIPC.cs
+[1] 'IPC suppressed: {Svc.PluginInterface.GetIpcSubscriber<bool>('  # UI\NeoUI\AdvancedEntries\DebugSection\DebugIPC.cs
+[1] 'Valid npc: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugInventoryManagement.cs
+[1] 'EnableSingleMultiMode'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] '\n                \n                LastRefreshTime {BailoutManager.LastRefreshTime} ({Environment.TickCount64 - BailoutManager.LastRefreshTime})\n                LastPosition {BailoutManager.LastPosition}\n                ExtendIsMoving {EzThrottler.GetRemainingTime('  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] '{}: {} ({} ago)'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] '-1 min##{}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'OfflineSubmarineData.Count {}, NumSubSlots {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'FC Rank: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] '\n                Current character: \n                SentVentures: {Data?.SentVenturesByDay.Sum(x => x.Value)}\n                SentVoyages: {Data?.SentVoyagesByDay.Sum(x => x.Value)}\n                Max enabled retainers: {Data?.GetEnabledRetainers(false).Length}\n                SentVentures all: {C.OfflineData.Sum(x => x.SentVenturesByDay.Select(x => x.Value).Sum())}\n                SentVoyages all: {C.OfflineData.Sum(x => x.SentVoyagesByDay.Select(x => x.Value).Sum())}\n                Max enabled retainers global: {C.OfflineData.Select(x => x.GetEnabledRetainers().Length).MaxSafe()}\n                Characters with enabled retainers: {C.OfflineData.Where(x => x.GetEnabledRetainers().Length > 0 && x.Enabled).Count()}\n                Characters with enabled submarines: {C.OfflineData.Where(x => x.GetEnabledVesselsData(Internal.VoyageType.Submersible).Count > 0 && x.WorkshopEnabled).Count()}\n                ---------\n                By day:\n                '  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] '\n                ---------\n                By character:\n                '  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Num: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] '{} ({}): {}, gathering: {} [{}], perception: {} [{}]'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'FC points: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'GetCurrentDivision {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'GetCurrentHouseId {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'GetCurrentPlot {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'GetCurrentRoom {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'GetCurrentWard {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'IsEstateResident {}: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'CSFramework.Instance()->FrameCounter: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Lockon: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'CSFramework.Instance()->WindowInactive: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'IsKeyPressed(C.TempCollectB): {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Bitmask.IsBitSet(User32.GetKeyState((int)C.TempCollectB), 15): {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'DontReassign: {}, key {}/{}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Utils.GetActiveRetainerInventoryName(): {} {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'ConditionWasEnabled={}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'Busy: {}, abort in {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'QSI status: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'QuickSellItems.IsReadyToUse: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] 'IsSelectedFilterValid: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMisc.cs
+[1] '{MultiMode.GetRetainerSortedOfflineDatas(true).Where(x => !x.ExcludeRetainer).Select(x => $'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] '\n                Can enter workshop: {Lifestream.CanMoveToWorkshop()}\n                '  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Expected: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Moving: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Occupied: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Casting: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Server time: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'PC time: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Nearest entrance: {}, d={}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'In residental area: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Is in sanctuary: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Is in sanctuary ExcelTerritoryHelper: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Distance to target: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Target hitbox: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] "Distance to target's hitbox: {}"  # UI\NeoUI\AdvancedEntries\DebugSection\DebugMulti.cs
+[1] 'Active: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugNMAPI.cs
+[1] 'vol'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugNMAPI.cs
+[1] '\n                    Rank: {reader.FCRank}\n                    Credits: {reader.Credits}\n                    Count: {reader.Count}\n                    '  # UI\NeoUI\AdvancedEntries\DebugSection\DebugReader.cs
+[1] 'Item {}, isHQ = {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugReader.cs
+[1] 'Distance: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugReader.cs
+[1] 'Fuel: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugReader.cs
+[1] 'Destination {}, rank={}, status={}, canBeSelected={}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugReader.cs
+[1] 'Current rank: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugReader.cs
+[1] 'Map {}, rank={}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugReader.cs
+[1] 'Gil: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'Utils.AnyRetainersAvailableCurrentChara(): {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'Free inventory slots: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugScheduler.cs
+[1] 'Enabled: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVenture.cs
+[1] '{}: null'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVenture.cs
+[1] 'Is voyage panel: {}, {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Bell: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Bell(true): {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Enabled subs: {Data.GetVesselData(VoyageType.Submersible).Select(x => $'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'AnyEnabledVesselsAvailable: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Panel type: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Button: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'IsRetainerBlockedByVoyage: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Curnet: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Name: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Hull: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] '->SternId: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'BridgeId: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'BowId: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'RankId: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'HID: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Num air: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Air: {}, returns at {}, current: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Sub: {}, returns at {}, current: {}'  # UI\NeoUI\AdvancedEntries\DebugSection\DebugVoyage.cs
+[1] 'Retainer {}'  # UI\NeoUI\AdvancedEntries\DebugSection\RetainersOld.cs
+[1] '{(ret.VentureID == 0 ? '  # UI\NeoUI\AdvancedEntries\DebugSection\RetainersOld.cs
+[1] 'Safety flag: {(g ? '  # UI\NeoUI\AdvancedEntries\DebugSection\SuperSecret.cs
+[1] '\n            Select the items to be purchased automatically during Grand Company Expert Delivery operations.\n            Purchase Logic:\n            - The system will attempt to purchase the first available item from the list.\n            - Purchases will continue until the quantity of that item in your inventory reaches the specified target amount.\n            If no listed items are available for purchase, or they cannot fit into your inventory:\n            - The system will purchase Ventures instead.\n            - Venture purchases will continue until your Venture count reaches 65,000.\n            Once the Venture cap is reached and no other purchases are possible:\n            - Any excess Grand Company Seals will be discarded.\n            '  # UI\NeoUI\InventoryManagementEntries\GCDeliveryEntries\ExchangeLists.cs
+[1] '\n            When Expert Delivery Continuation is enabled:\n            - The plugin will automatically spend available Grand Company Seals to purchase items from the configured Exchange List.\n            - If the Exchange List is empty, only Ventures will be purchased.\n            - Make sure that '  # UI\NeoUI\InventoryManagementEntries\GCDeliveryEntries\GeneralSettings.cs
+[1] ' is not set to '  # UI\NeoUI\InventoryManagementEntries\GCDeliveryEntries\GeneralSettings.cs
+[1] ' in '  # UI\NeoUI\InventoryManagementEntries\GCDeliveryEntries\GeneralSettings.cs
+[1] ' section\n\n            After seals have been spent:\n            - Expert Delivery will resume automatically.\n            - The process will repeat until there are no eligible items left to deliver or no seals remaining.\n            '  # UI\NeoUI\InventoryManagementEntries\GCDeliveryEntries\GeneralSettings.cs
+[1] '\n        When enabled:\n        - Characters with teleportation enabled will automatically deliver items for expert delivery and buy items according to exchange plan, if their rank is sufficient, during multi mode.\n        '  # UI\NeoUI\InventoryManagementEntries\GCDeliveryEntries\GeneralSettings.cs
+[1] '    {}{(fcdata != null && fcdata.Gil > 0 ? '  # UI\Statistics\GilDisplayManager.cs
+[1] '             {}: {(C.StatsUnifyHQ ? c.Value.Amount + c.Value.AmountHQ : $'  # UI\Statistics\VentureStatsManager.cs
+[1] 'Unlock submarine slots. Current slots: {GetNumUnlockedSubs()?.ToString() ?? '  # UI\Windows\SubmarineUnlockPlanUI.cs
+[1] '}/4'  # UI\Windows\SubmarineUnlockPlanUI.cs
+[1] '  {} < {}  '  # UI\Windows\VentureBrowser.cs
+[1] '{} {}+'  # UI\Windows\VentureBrowser.cs

@@ -71,7 +71,7 @@ internal static unsafe class MultiMode
                 {
                     if(MultiMode.ExpectedCharacter.Value.Name != Player.Name || MultiMode.ExpectedCharacter.Value.World != Player.HomeWorld)
                     {
-                        DuoLog.Warning($"[ARERRCMM] Character mismatch, expected {MultiMode.ExpectedCharacter}, but logged in on {Player.NameWithWorld}. Please report this to developer unless you have manually interfered with login process");
+                        DuoLog.Warning($"[ARERRCMM] 角色不匹配，预期 {MultiMode.ExpectedCharacter}，但登录的是 {Player.NameWithWorld}。除非你手动干预了登录过程，否则请向开发者报告此问题");
                     }
                 }
                 MultiMode.ExpectedCharacter = null;
@@ -80,7 +80,7 @@ internal static unsafe class MultiMode
             WriteOfflineData(true, true);
             if(LastLogin == Svc.ClientState.LocalContentId && Active)
             {
-                DuoLog.Error("Multi mode disabled as it have detected duplicate login.");
+                DuoLog.Error("多角色模式已禁用，因为检测到重复登录。");
                 Enabled = false;
             }
             LastLogin = MultiMode.Enabled && !C.MultiWaitOnLoginScreen ? Svc.ClientState.LocalContentId : 0;
@@ -259,7 +259,7 @@ internal static unsafe class MultiMode
                     }
                     if(EzThrottler.Check("ForceShutdownForSubs"))
                     {
-                        PluginLog.Warning($"Could not shutdown the game normally, forcing exit");
+                        PluginLog.Warning($"无法正常关闭游戏，强制退出");
                         Environment.Exit(0);
                     }
                 }
@@ -280,7 +280,7 @@ internal static unsafe class MultiMode
                         {
                             if(!Relog(next, out var error, RelogReason.MultiMode))
                             {
-                                PluginLog.Error($"Error while automatically logging in: {error}");
+                                PluginLog.Error($"自动登录时出错: {error}");
                                 Notify.Error($"{error}");
                             }
                         }
@@ -293,7 +293,7 @@ internal static unsafe class MultiMode
                 {
                     data.Enabled = false;
                     data.WorkshopEnabled = false;
-                    DuoLog.Warning("Too many errors, current character is excluded.");
+                    DuoLog.Warning("错误过多，当前角色已被排除。");
                     Interactions.Clear();
                     return;
                 }
@@ -301,7 +301,7 @@ internal static unsafe class MultiMode
                 {
                     Enabled = false;
                     data.WorkshopEnabled = false;
-                    DuoLog.Error("Fatal error. Please report this with logs.");
+                    DuoLog.Error("致命错误。请连同日志报告此问题。");
                     Interactions.Clear();
                     return;
                 }
@@ -491,7 +491,7 @@ internal static unsafe class MultiMode
             TaskNeoHET.TryEnterWorkshop(() =>
             {
                 Data.Enabled = false;
-                DuoLog.Error($"Due to absence of retainer bell and failure to find workshop, character is excluded from processing retainers");
+                DuoLog.Error($"由于没有雇员铃且无法找到工房，该角色已被排除在雇员处理之外");
                 P.TaskManager.Abort();
             });
         }
@@ -561,7 +561,7 @@ internal static unsafe class MultiMode
                 {
                     z.Preferred = false;
                 }
-                Notify.Warning("Preferred character has been reset");
+                Notify.Warning("首选角色已重置");
             }
         }
         ErrorMessage = string.Empty;
@@ -861,7 +861,7 @@ internal static unsafe class MultiMode
                     }
                     else
                     {
-                        DuoLog.Error($"Error during auto login: {error}");
+                        DuoLog.Error($"自动登录期间出错: {error}");
                     }
                 }
                 return false;

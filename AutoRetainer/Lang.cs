@@ -40,9 +40,71 @@ internal static class Lang
 
     internal static readonly ReadOnlyDictionary<UnlockMode, string> UnlockModeNames = new(new Dictionary<UnlockMode, string>()
     {
-        { UnlockMode.MultiSelect, "Pick max amount of destinations" },
-        { UnlockMode.SpamOne, "Spam one destination" },
-        { UnlockMode.WhileLevelling, "Include one unlock destination while levelling" },
+        { UnlockMode.MultiSelect, "选择最大数量的目的地" },
+        { UnlockMode.SpamOne, "反复部署单个目的地" },
+        { UnlockMode.WhileLevelling, "升级期间包含一个解锁目的地" },
+    });
+
+    internal static readonly ReadOnlyDictionary<OpenBellBehavior, string> OpenBellBehaviorNames = new(new Dictionary<OpenBellBehavior, string>()
+    {
+        { OpenBellBehavior.Do_nothing, "不执行任何操作" },
+        { OpenBellBehavior.Enable_AutoRetainer, "启用 AutoRetainer" },
+        { OpenBellBehavior.Disable_AutoRetainer, "禁用 AutoRetainer" },
+        { OpenBellBehavior.Pause_AutoRetainer, "暂停 AutoRetainer" },
+    });
+
+    internal static readonly ReadOnlyDictionary<TaskCompletedBehavior, string> TaskCompletedBehaviorNames = new(new Dictionary<TaskCompletedBehavior, string>()
+    {
+        { TaskCompletedBehavior.Close_retainer_list_and_disable_plugin, "关闭雇员列表并禁用插件" },
+        { TaskCompletedBehavior.Close_retainer_list_and_keep_plugin_enabled, "关闭雇员列表并保持插件启用" },
+        { TaskCompletedBehavior.Stay_in_retainer_list_and_disable_plugin, "停留在雇员列表并禁用插件" },
+        { TaskCompletedBehavior.Stay_in_retainer_list_and_keep_plugin_enabled, "停留在雇员列表并保持插件启用" },
+    });
+
+    internal static readonly ReadOnlyDictionary<CutsceneSkipMode, string> CutsceneSkipModeNames = new(new Dictionary<CutsceneSkipMode, string>()
+    {
+        { CutsceneSkipMode.Never, "从不" },
+        { CutsceneSkipMode.When_Multi_Mode_is_on, "多角色模式开启时" },
+        { CutsceneSkipMode.Always, "总是" },
+    });
+
+    internal static readonly ReadOnlyDictionary<VesselBehavior, string> VesselBehaviorNames = new(new Dictionary<VesselBehavior, string>()
+    {
+        { VesselBehavior.Finalize, "收尾（不再部署）" },
+        { VesselBehavior.Redeploy, "重新部署" },
+        { VesselBehavior.LevelUp, "升级" },
+        { VesselBehavior.Unlock, "解锁" },
+        { VesselBehavior.Use_plan, "使用方案" },
+    });
+
+    internal static readonly ReadOnlyDictionary<GCDeliveryType, string> GCDeliveryTypeNames = new(new Dictionary<GCDeliveryType, string>()
+    {
+        { GCDeliveryType.Disabled, "禁用" },
+        { GCDeliveryType.Hide_Armoury_Chest_Items, "隐藏装备箱物品" },
+        { GCDeliveryType.Hide_Gear_Set_Items, "隐藏套装物品" },
+        { GCDeliveryType.Show_All_Items, "显示所有物品" },
+    });
+
+    internal static readonly ReadOnlyDictionary<MultiModeType, string> MultiModeTypeNames = new(new Dictionary<MultiModeType, string>()
+    {
+        { MultiModeType.Retainers, "雇员" },
+        { MultiModeType.Submersibles, "潜水艇" },
+        { MultiModeType.Everything, "全部" },
+    });
+
+    internal static readonly ReadOnlyDictionary<UnavailableVentureDisplay, string> UnavailableVentureDisplayNames = new(new Dictionary<UnavailableVentureDisplay, string>()
+    {
+        { UnavailableVentureDisplay.Hide, "隐藏" },
+        { UnavailableVentureDisplay.Display, "显示" },
+        { UnavailableVentureDisplay.Allow_selection, "允许选择" },
+    });
+
+    internal static readonly ReadOnlyDictionary<PlanCompleteBehavior, string> PlanCompleteBehaviorNames = new(new Dictionary<PlanCompleteBehavior, string>()
+    {
+        { PlanCompleteBehavior.Restart_plan, "重新开始方案" },
+        { PlanCompleteBehavior.Assign_Quick_Venture, "指派快速探险" },
+        { PlanCompleteBehavior.Do_nothing, "不执行任何操作" },
+        { PlanCompleteBehavior.Repeat_last_venture, "重复上次的探险委托" },
     });
 
     internal static readonly (string Normal, string GameFont) Digits = ("0123456789", "");

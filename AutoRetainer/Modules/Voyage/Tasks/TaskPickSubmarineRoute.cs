@@ -48,7 +48,7 @@ internal static unsafe class TaskPickSubmarineRoute
             var cnt = new ReaderSubmarineExplorationMapSelect(addon).Maps.Count;
             if(which < 1 || which > cnt)
             {
-                PluginLog.Error($"Invalid map index specified (specified {which}, max {cnt})");
+                PluginLog.Error($"指定了无效的地图索引（指定 {which}，最大 {cnt}）");
                 return false;
             }
             if(Utils.GenericThrottle && EzThrottler.Throttle("PickMapVoyage", 2000))

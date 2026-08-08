@@ -46,7 +46,7 @@ internal static unsafe class VoyageMain
             if(txt.ContainsAny(StringComparison.OrdinalIgnoreCase, Lang.UnableToRepairVessel))
             {
                 TaskRepairAll.Abort = true;
-                DuoLog.Warning($"[Voyage] You are out of repair components!");
+                DuoLog.Warning($"[远征] 你的修理配件用完了！");
                 Data.GetEnabledVesselsData(TaskRepairAll.Type).Remove(TaskRepairAll.Name);
                 S.AnomalyWindow.Add($"Out of repair materials, could not repair {TaskRepairAll.Type} {TaskRepairAll.Name}");
             }
@@ -72,7 +72,7 @@ internal static unsafe class VoyageMain
                     //Notify.Info($"Entered voyage panel");
                     if(IsKeyPressed(C.Suppress))
                     {
-                        Notify.Warning("No operation was requested by user");
+                        Notify.Warning("用户未请求任何操作");
                     }
                     else
                     {
@@ -85,7 +85,7 @@ internal static unsafe class VoyageMain
                             }
                             else
                             {
-                                Notify.Warning($"Warning!\nDeployables were not enabled as there are nothing to process yet");
+                                Notify.Warning($"警告！\n远征探险未启用，因为还没有任何可处理的内容");
                             }
                         }
                     }
@@ -269,7 +269,7 @@ internal static unsafe class VoyageMain
                                         }
                                         else
                                         {
-                                            DuoLog.Error($"Invalid plan selected (Points.Count={plan.Points.Count})");
+                                            DuoLog.Error($"选择了无效的方案（点数数量={plan.Points.Count}）");
                                         }
                                     }
                                     else if(adata.VesselBehavior == VesselBehavior.Redeploy)

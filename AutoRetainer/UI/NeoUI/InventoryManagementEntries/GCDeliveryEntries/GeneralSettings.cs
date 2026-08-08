@@ -7,35 +7,23 @@ using System.Threading.Tasks;
 namespace AutoRetainer.UI.NeoUI.InventoryManagementEntries.GCDeliveryEntries;
 public sealed unsafe class GeneralSettings : InventoryManagementBase
 {
-    public override string Name { get; } = "Grand Company Delivery/General Settings";
+    public override string Name { get; } = "大国防联军 - 一般设置";
 
     public override NuiBuilder Builder => new NuiBuilder()
-        .Section("General Settings")
-        .Checkbox("Enable Expert Delivery continuation", () => ref C.AutoGCContinuation)
-        .TextWrapped($"""
-            When Expert Delivery Continuation is enabled:
-            - The plugin will automatically spend available Grand Company Seals to purchase items from the configured Exchange List.
-            - If the Exchange List is empty, only Ventures will be purchased.
-            - Make sure that "Delivery Mode" is not set to "Disabled" in "Character Configuration" section
+        .Section("一般设置")
+        .Checkbox("启用自动筹备交换", () => ref C.AutoGCContinuation)
+        .TextWrapped($"""\n            启用专家交付续传后:\n            - 插件将自动消耗可用的军票，从配置的兑换列表中购买物品。\n            - 如果兑换列表为空，将只购买冒险委托。\n            - 请确保 "Delivery Mode" 未设置为 "Disabled" 在 "Character Configuration" 部分中。\n\n            军票用完后:\n            - 专家交付将自动恢复。\n            - 该过程将重复，直到没有符合条件的物品可交付或没有剩余军票。\n            """)
 
-            After seals have been spent:
-            - Expert Delivery will resume automatically.
-            - The process will repeat until there are no eligible items left to deliver or no seals remaining.
-            """)
-
-        .Section("Multi Mode Expert Delivery")
-        .TextWrapped($"""
-        When enabled:
-        - Characters with teleportation enabled will automatically deliver items for expert delivery and buy items according to exchange plan, if their rank is sufficient, during multi mode.
-        """)
-        .Checkbox("Enable Multi Mode Expert Delivery", () => ref C.FullAutoGCDelivery)
-        .Checkbox("Only when workstation is not locked", () => ref C.FullAutoGCDeliveryOnlyWsUnlocked)
-        .InputInt(150f, "Inventory slots remaining to trigger delivery, less or equal", () => ref C.FullAutoGCDeliveryInventory, "Only primary inventory is accounted for, not armory")
-        .Checkbox("Trigger on venture exhaustion", () => ref C.FullAutoGCDeliveryDeliverOnVentureExhaust, "This may cause situation where you will just go to GC exchange every login. Make sure you have a purchase plan to buy enough ventures set. ")
+        .Section("多角色模式筹备交换")
+        .TextWrapped($"""\n        启用后:\n        - 启用传送的角色将在多角色模式下自动交付专家交付物品，并根据兑换计划购买物品（如果其军衔足够）。\n        """)
+        .Checkbox("启用多角色筹备交换", () => ref C.FullAutoGCDelivery)
+        .Checkbox("仅在工作台未锁定时触发", () => ref C.FullAutoGCDeliveryOnlyWsUnlocked)
+        .InputInt(150f, "触发筹备的剩余背包格数 (小于或等于)", () => ref C.FullAutoGCDeliveryInventory, "仅计算主要背包，不包含兵装库")
+        .Checkbox("当当探险币耗尽时触发", () => ref C.FullAutoGCDeliveryDeliverOnVentureExhaust, "此选项可能导致每次登录时都会前往军队兑换。请确保已设置足够探险币的方案。")
         .Indent()
-        .InputInt(150f, "Ventures remaining to trigger delivery, less or equal", () => ref C.FullAutoGCDeliveryDeliverOnVentureLessThan)
+        .InputInt(150f, "触发筹备的剩余探险币数量 (小于或等于)", () => ref C.FullAutoGCDeliveryDeliverOnVentureLessThan)
         .Unindent()
-        .Checkbox("Use Priority seal allowance, if possible", () => ref C.FullAutoGCDeliveryUseBuffItem)
+        .Checkbox("优先使用军票加成票券，如果可用的话", () => ref C.FullAutoGCDeliveryUseBuffItem)
         .Widget(() =>
         {
             if(C.FullAutoGCDeliveryUseBuffItem)
@@ -43,14 +31,14 @@ public sealed unsafe class GeneralSettings : InventoryManagementBase
                 ImGui.Indent();
                 if(Data != null)
                 {
-                    ImGuiEx.Checkbox($"Exclude {Data.NameWithWorldCensored}##item", ref Data.NoItemBuffUse);
+                    ImGuiEx.Checkbox($"排除 {Data.NameWithWorldCensored}##item", ref Data.NoItemBuffUse);
                 }
                 var cnt = C.OfflineData.Count(x => x.NoItemBuffUse);
                 ImGuiEx.Text($"{(cnt > 0 ? $"{cnt} character(s) are excluded from buff item usage. " : "")} Navigate to \"Functions, Exclusions, Order\" section to exclude a character.");
                 ImGui.Unindent();
             }
         })
-        .Checkbox("Use Free Company seal buff, if possible", () => ref C.FullAutoGCDeliveryUseBuffFCAction)
+        .Checkbox("优先使用部队军票加成BUFF，如果可用的话", () => ref C.FullAutoGCDeliveryUseBuffFCAction)
         .Widget(() =>
         {
             if(C.FullAutoGCDeliveryUseBuffFCAction)
@@ -58,16 +46,16 @@ public sealed unsafe class GeneralSettings : InventoryManagementBase
                 ImGui.Indent();
                 if(Data != null)
                 {
-                    ImGuiEx.Checkbox($"Exclude {Data.NameWithWorldCensored}", ref Data.NoFcBuffUse);
+                    ImGuiEx.Checkbox($"排除 {Data.NameWithWorldCensored}", ref Data.NoFcBuffUse);
                 }
                 var cnt = C.OfflineData.Count(x => x.NoFcBuffUse);
                 ImGuiEx.Text($"{(cnt > 0 ? $"{cnt} character(s) are excluded from buff item usage. " : "")} Navigate to \"Functions, Exclusions, Order\" section to exclude a character.");
                 ImGui.Unindent();
             }
         })
-        .Checkbox("Teleport back to house/inn after delivery", () => ref C.TeleportAfterGCExchange)
+        .Checkbox("筹备交换后传送回房屋/旅馆", () => ref C.TeleportAfterGCExchange)
         .Indent()
-        .Checkbox("Only when Multi Mode is active", () => ref C.TeleportAfterGCExchangeMulti)
+        .Checkbox("仅在多角色模式启动时", () => ref C.TeleportAfterGCExchangeMulti)
         .Unindent()
         ;
 }

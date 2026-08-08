@@ -95,7 +95,7 @@ public unsafe class AutoRetainer : IDalamudPlugin
             ECommonsMain.Init(pi, this, Module.DalamudReflector);
             EzIPC.OnSafeInvocationException += x => InternalLog.Error(x.ToStringFull());
 #if CUSTOMCS
-            PluginLog.Warning($"Using custom FFXIVClientStructs");
+            PluginLog.Warning($"使用自定义 FFXIVClientStructs");
             var gameVersion = DalamudReflector.TryGetDalamudStartInfo(out var ver) ? ver.GameVersion.ToString() : "unknown";
             InteropGenerator.Runtime.Resolver.GetInstance.Setup(Svc.SigScanner.SearchBase, gameVersion, new(Svc.PluginInterface.ConfigDirectory.FullName + "/cs.json"));
             FFXIVClientStructs.Interop.Generated.Addresses.Register();
@@ -164,23 +164,23 @@ public unsafe class AutoRetainer : IDalamudPlugin
         Svc.ClientState.Logout += Logout;
         Svc.Condition.ConditionChange += ConditionChange;
         EzCmd.Add("/autoretainer", CommandHandler, """
-            Open plugin interface
-            /ays - alias for /autoretainer
-            /autoretainer e|enable → Enable plugin
-            /autoretainer d|disable - Disable plugin
-            /autoretainer t|toggle - toggle plugin
-            /autoretainer m|multi - toggle MultiMode
-            /autoretainer relog Character Name@WorldName - relog to the targeted character if configured
-            /autoretainer b|browser - open venture browser
-            /autoretainer expert - toggle expert settings
-            /autoretainer debug - toggle debug menu and verbose output
-            /autoretainer shutdown <hours> [minutes] [seconds] - schedule a game shutdown in this amount of time
-            /autoretainer itemsell - begin selling items to NPC or retainer if possible
-            /autoretainer het - enter nearby own house or apartment if possible
-            /autoretainer reset - reset all pending tasks
-            /autoretainer deliver - deliver expert delivery items
-            /autoretainer armoire - deliver all eligible items into armoire
-            /autoretainer dresser - deliver all eligible items into glamour dresser (requires Glamour Log plugin)
+            打开插件界面
+            /ays - /autoretainer 的别名
+            /autoretainer e|enable - 启用插件
+            /autoretainer d|disable - 禁用插件
+            /autoretainer t|toggle - 开关插件
+            /autoretainer m|multi - 开关多角色模式
+            /autoretainer relog 角色名@服务器名 - 重新登录到目标角色（如已配置）
+            /autoretainer b|browser - 打开探险委托浏览器
+            /autoretainer expert - 开关专家设置
+            /autoretainer debug - 开关调试菜单与详细输出
+            /autoretainer shutdown <小时> [分钟] [秒] - 计划在此时间后关闭游戏
+            /autoretainer itemsell - 开始向 NPC 或雇员出售物品（如可能）
+            /autoretainer het - 进入附近自己的房屋或公寓（如可能）
+            /autoretainer reset - 重置所有待处理任务
+            /autoretainer deliver - 交付专家交付物品
+            /autoretainer armoire - 将所有符合条件的物品放入置衣柜
+            /autoretainer dresser - 将所有符合条件的物品放入投影柜（需要 Glamour Log 插件）
             """);
         EzCmd.Add("/ays", CommandHandler);
         Svc.Toasts.ErrorToast += Toasts_ErrorToast;
@@ -381,22 +381,22 @@ public unsafe class AutoRetainer : IDalamudPlugin
             }
             else
             {
-                Notify.Error($"Could not find target character");
+                Notify.Error($"找不到目标角色");
             }
         }
         else if(arguments.EqualsIgnoreCase("het"))
         {
-            TaskNeoHET.Enqueue(() => DuoLog.Error("Failed to find suitable house"));
+            TaskNeoHET.Enqueue(() => DuoLog.Error("找不到合适的房屋"));
         }
         else if(arguments.EqualsIgnoreCase("wet"))
         {
             if(TaskNeoHET.GetWorkshopEntrance() != null)
             {
-                TaskNeoHET.TryEnterWorkshop(() => DuoLog.Error("Failed to enter workshop"));
+                TaskNeoHET.TryEnterWorkshop(() => DuoLog.Error("无法进入工房"));
             }
             else
             {
-                TaskNeoHET.Enqueue(() => DuoLog.Error("Failed to find suitable house"), true);
+                TaskNeoHET.Enqueue(() => DuoLog.Error("找不到合适的房屋"), true);
             }
         }
         else if(arguments.EqualsIgnoreCaseAny("itemsell"))
@@ -407,7 +407,7 @@ public unsafe class AutoRetainer : IDalamudPlugin
             }
             else
             {
-                DuoLog.Error($"No valid housing NPC or retainer bell were found, or AutoRetainer is busy, or sale function is disabled");
+                DuoLog.Error($"未找到有效的房屋 NPC 或雇员铃，或 AutoRetainer 正忙，或出售功能已禁用");
             }
         }
         else if(arguments.EqualsIgnoreCaseAny("armoire"))
@@ -418,7 +418,7 @@ public unsafe class AutoRetainer : IDalamudPlugin
             }
             else
             {
-                DuoLog.Warning("AutoRetainer is busy or player is occupied.");
+                DuoLog.Warning("AutoRetainer 正忙或玩家处于忙碌状态。");
             }
         }
         else if(arguments.EqualsIgnoreCaseAny("dresser"))
@@ -431,12 +431,12 @@ public unsafe class AutoRetainer : IDalamudPlugin
                 }
                 else
                 {
-                    DuoLog.Warning("AutoRetainer is busy or player is occupied.");
+                    DuoLog.Warning("AutoRetainer 正忙或玩家处于忙碌状态。");
                 }
             }
             else
             {
-                DuoLog.Warning($"Glamour Log plugin is required for this function.");
+                DuoLog.Warning($"此功能需要 Glamour Log 插件。");
             }
         }
         else if(arguments.StartsWith("shutdown"))
@@ -458,7 +458,7 @@ public unsafe class AutoRetainer : IDalamudPlugin
                     if(str.Length > 3) time = time.Add(TimeSpan.FromSeconds(int.Parse(str[3])));
                     if(time.TotalSeconds < 10)
                     {
-                        DuoLog.Error("Timer can't be less than 10 seconds");
+                        DuoLog.Error("计时器不能少于 10 秒");
                     }
                     else
                     {
@@ -485,7 +485,7 @@ public unsafe class AutoRetainer : IDalamudPlugin
                     if(!s.IMAutoVendorSoft.Contains(id))
                     {
                         s.IMAutoVendorSoft.Add(id);
-                        PluginLog.Warning($"External addition to soft vendor list: {ExcelItemHelper.GetName(id)}");
+                        PluginLog.Warning($"外部添加到软商人列表: {ExcelItemHelper.GetName(id)}");
                     }
                 }
                 else if(num < 0)
@@ -494,7 +494,7 @@ public unsafe class AutoRetainer : IDalamudPlugin
                     if(s.IMAutoVendorSoft.Contains(id))
                     {
                         s.IMAutoVendorSoft.Remove(id);
-                        PluginLog.Warning($"External removal from soft vendor list: {ExcelItemHelper.GetName(id)}");
+                        PluginLog.Warning($"外部从软商人列表移除: {ExcelItemHelper.GetName(id)}");
                     }
                 }
             }
@@ -503,7 +503,7 @@ public unsafe class AutoRetainer : IDalamudPlugin
         {
             P.TaskManager.Abort();
             SchedulerMain.CharacterPostProcessLocked = false;
-            Notify.Success("Reset completed");
+            Notify.Success("重置完成");
         }
         else if(arguments.EqualsIgnoreCase("deliver"))
         {
@@ -818,7 +818,7 @@ public unsafe class AutoRetainer : IDalamudPlugin
                             if(bellBehavior != OpenBellBehavior.Pause_AutoRetainer && IsKeyPressed(C.Suppress) && !CSFramework.Instance()->WindowInactive)
                             {
                                 bellBehavior = OpenBellBehavior.Do_nothing;
-                                Notify.Info($"Open bell action cancelled");
+                                Notify.Info($"打开铃铛的操作已取消");
                             }
                             if(SchedulerMain.PluginEnabled && bellBehavior == OpenBellBehavior.Pause_AutoRetainer)
                             {

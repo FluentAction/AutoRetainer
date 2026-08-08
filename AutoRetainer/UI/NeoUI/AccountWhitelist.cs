@@ -10,14 +10,14 @@ public sealed unsafe class AccountWhitelist : NeoUIEntry
 {
     public override void Draw()
     {
-        ImGuiEx.TextWrapped($"You may setup account whitelist. In the event you will log in using non-whitelisted account, AutoRetainer will not record any characters, retainers, or submarines.");
+        ImGuiEx.TextWrapped($"您可以设置帐户白名单。当您使用非白名单帐号登录时，AutoRetainer将不会记录任何角色、雇员或潜水艇信息。");
         if(C.WhitelistedAccounts.Count == 0)
         {
-            ImGuiEx.TextWrapped(EColor.GreenBright, "Current whitelist status: Disabled. To enable, add some account to it.");
+            ImGuiEx.TextWrapped(EColor.GreenBright, "目前白名单状态：已禁用。要启用，请添加一些帐号。");
         }
         else
         {
-            ImGuiEx.TextWrapped(EColor.YellowBright, "Current whitelist status: Enabled. To disable, remove all accounts from it.");
+            ImGuiEx.TextWrapped(EColor.YellowBright, "目前白名单状态：已启用。要禁用，请移除所有帐号。");
         }
 
         foreach(var x in C.WhitelistedAccounts)

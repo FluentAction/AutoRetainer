@@ -41,7 +41,7 @@ internal static unsafe class MultiModeUI
         {
             var data = sortedData[index];
             if(data.World.IsNullOrEmpty() || data.ExcludeRetainer) continue;
-            var search = Ref<string>.Get("SearchChara");
+            var search = Ref<string>.Get("搜索角色");
             if(search != "" && !$"{data.Name}@{data.World}".Contains(search, StringComparison.OrdinalIgnoreCase)) continue;
             ImGui.PushID(data.CID.ToString());
             var rCurPos = ImGui.GetCursorPos();
@@ -56,14 +56,14 @@ internal static unsafe class MultiModeUI
                 data.Enabled = !data.Enabled;
             }
             if(colen) ImGui.PopStyleColor();
-            ImGuiEx.Tooltip($"Enable multi mode for this character");
+            ImGuiEx.Tooltip($"为此角色启用多角色模式");
             ImGuiEx.DragDropRepopulate("EnMulti", data.Enabled, ref data.Enabled);
             ImGui.SameLine(0, 3);
             if(ImGuiEx.IconButton(FontAwesomeIcon.DoorOpen))
             {
                 if(MultiMode.Relog(data, out var error, RelogReason.ConfigGUI))
                 {
-                    Notify.Success("Relogging...");
+                    Notify.Success("正在重新登录...");
                 }
                 else
                 {
@@ -74,7 +74,7 @@ internal static unsafe class MultiModeUI
             {
                 Copy($"/ays relog {data.Name}@{data.World}");
             }
-            ImGuiEx.Tooltip($"Left click - relog to this character\nRight click - copy relog command into clipboard");
+            ImGuiEx.Tooltip($"左键 - 重新登录此角色\\n右键 - 复制重新登录指令到剪贴簿");
             ImGui.SameLine(0, 3);
             if(ImGuiEx.IconButton(FontAwesomeIcon.UserCog))
             {
@@ -84,7 +84,7 @@ internal static unsafe class MultiModeUI
             {
                 Copy($"{data.Name}@{data.World}");
             }
-            ImGuiEx.Tooltip($"Configure Character");
+            ImGuiEx.Tooltip($"配置角色");
             ImGui.SameLine(0, 3);
 
             if(ImGui.BeginPopup($"popup{data.CID}"))

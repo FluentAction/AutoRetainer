@@ -42,7 +42,7 @@ public unsafe class DebugCabinet : DebugSectionBase
         }
         ImGui.Separator();
         ImGuiEx.Text($"CanDeliverCabinet: {S.CabinetManager.CanDeliverCabinet()}");
-        if(ImGui.Button("Deliver items")) S.CabinetManager.EnqueueAllDeliverableItems();
+        if(ImGui.Button("交付物品")) S.CabinetManager.EnqueueAllDeliverableItems();
         if(ImGui.Button("EnqueueGoToInnAndDeliverEverything")) S.CabinetManager.EnqueueGoToInnAndDeliverEverything();
         if(S.CabinetManager.TryGetStoredCabinetItems(out var cached, out var items))
         {

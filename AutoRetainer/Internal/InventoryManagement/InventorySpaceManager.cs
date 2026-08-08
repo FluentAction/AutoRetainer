@@ -30,28 +30,28 @@ public static unsafe class InventorySpaceManager
             var inv = InventoryManager.Instance()->GetInventoryContainer(Task.InventoryType);
             if(inv == null)
             {
-                DuoLog.Warning($"Inventory {Task.InventoryType} is null");
+                DuoLog.Warning($"背包 {Task.InventoryType} 为空");
                 return true;
             }
             if(Data.GetIMSettings().IMProtectList.Contains(Task.ItemID))
             {
-                DuoLog.Warning($"Item {Task} is protected and won't be sold.");
+                DuoLog.Warning($"物品 {Task} 受保护，不会被出售。");
                 return true;
             }
             var slot = inv->Items[Task.Slot];
             if(Task.ItemID != slot.ItemId || slot.ItemId == 0 || slot.Quantity != Task.Quantity)
             {
-                DuoLog.Warning($"Slot contains different item {ExcelItemHelper.GetName(slot.ItemId)}x{slot.Quantity}, should be {Task}");
+                DuoLog.Warning($"栏位包含不同的物品 {ExcelItemHelper.GetName(slot.ItemId)}x{slot.Quantity}，应为 {Task}");
                 return true;
             }
             if(!IsRetainerInventoryLoaded())
             {
-                DuoLog.Warning($"Could not find retainer inventory");
+                DuoLog.Warning($"找不到雇员背包");
                 return true;
             }
             if(!IsAgentRetainerActive)
             {
-                DuoLog.Warning($"AgentRetainer is not active");
+                DuoLog.Warning($"AgentRetainer 未激活");
                 return true;
             }
             if(!Data.GetIMSettings().IMDry)
@@ -61,7 +61,7 @@ public static unsafe class InventorySpaceManager
             }
             else
             {
-                DuoLog.Warning($"> IMDry > Would sell slot {Task}");
+                DuoLog.Warning($"> IMDry > 将出售栏位 {Task}");
             }
             Log.Add($"[{DateTime.Now}] Sold {Task} on {Data.Name}");
             return true;

@@ -3,29 +3,29 @@
 namespace AutoRetainer.UI.NeoUI.MultiModeEntries;
 public class MultiModeDeployables : NeoUIEntry
 {
-    public override string Path => "Multi Mode/Deployables";
+    public override string Path => "多角色模式/远征探险";
 
     public override NuiBuilder Builder { get; init; } = new NuiBuilder()
-        .Section("Multi Mode - Deployables")
-        .Checkbox("Wait For Voyage Completion", () => ref C.MultiModeWorkshopConfiguration.MultiWaitForAll, """When enabled, AutoRetainer will wait for all deployables to return before logging into the character. If you're already logged in for another reason, it will still resend completed submarines—unless the global setting "Wait even when already logged in" is also turned on.""")
+        .Section("多角色模式 - 潜艇/飞空艇")
+        .Checkbox("等待航程完成", () => ref C.MultiModeWorkshopConfiguration.MultiWaitForAll, """启用后，AutoRetainer 将等待所有远征探险返回后才登录该角色。如果你因其他原因已登录，它仍会重新派遣已完成的潜水艇——除非全局设置 "Wait even when already logged in" 也已开启。""")
         .Indent()
-        .Checkbox("Wait even when already logged in", () => ref C.MultiModeWorkshopConfiguration.WaitForAllLoggedIn, """Changes the behavior of "Wait for Voyage Completion" (both global and per-character) so that AutoRetainer no longer resends individual submarines while already logged in. Instead, it will wait until all submarines have returned before taking action.""")
-        .InputInt(120f, "Maximum Wait, minutes", () => ref C.MultiModeWorkshopConfiguration.MaxMinutesOfWaiting.ValidateRange(0, 9999), 10, 60, """If waiting for other deployables to return would exceed this number of minutes, AutoRetainer will ignore both the "Wait for Voyage Completion" and "Wait even when already logged in" settings.""")
+        .Checkbox("即使已登录也等待", () => ref C.MultiModeWorkshopConfiguration.WaitForAllLoggedIn, """改变 "Wait for Voyage Completion"（全局和按角色）的行为，使 AutoRetainer 在已登录时不再单独重新派遣潜水艇。相反，它会等待所有潜水艇返回后再采取行动。""")
+        .InputInt(120f, "最大等待时间（分钟）", () => ref C.MultiModeWorkshopConfiguration.MaxMinutesOfWaiting.ValidateRange(0, 9999), 10, 60, """如果等待其他远征探险返回的时间将超过此分钟数，AutoRetainer 将忽略 "Wait for Voyage Completion" 和 "Wait even when already logged in" 设置。""")
         .Unindent()
-        .DragInt(60f, "Advance Relog Threshold, seconds", () => ref C.MultiModeWorkshopConfiguration.AdvanceTimer.ValidateRange(0, 300), 0.1f, 0, 300, "The number of seconds AutoRetainer should log in early before submarines on this character are ready to be resent.")
+        .DragInt(60f, "提前登录阈值（秒）", () => ref C.MultiModeWorkshopConfiguration.AdvanceTimer.ValidateRange(0, 300), 0.1f, 0, 300, "The number of seconds AutoRetainer should log in early before submarines on this character are ready to be resent.")
         .DragInt(120f, "Retainer venture processing cutoff, minutes", () => ref C.DisableRetainerVesselReturn.ValidateRange(0, 60), "If set to a value greater than 0, AutoRetainer will stop processing any retainers this number of minutes before any character is scheduled to redeploy submarines, taking all previous settings into account.")
-        .Checkbox("Sell items from Unconditional sell list right after deployment (requires retainers)", () => ref C.VendorItemAfterVoyage)
-        .Checkbox("Periodically check FC chest for gil upon entering workshop", () => ref C.FCChestGilCheck, "Periodically checks the Free Company chest when entering the Workshop to keep the gil counter up to date.")
+        .Checkbox("派遣后立即出售\"无条件出售清单\"中的物品（需要雇员）", () => ref C.VendorItemAfterVoyage)
+        .Checkbox("进入部队工作坊时，定期检查部队箱中的金币", () => ref C.FCChestGilCheck, "在进入工作坊时定期检查部队箱，以保持金币计数为最新状态。")
         .Indent()
-        .SliderInt(150f, "Check frequency, hours", () => ref C.FCChestGilCheckCd, 0, 24 * 5)
-        .Widget("Reset cooldowns", (x) =>
+        .SliderInt(150f, "检查频率（小时）", () => ref C.FCChestGilCheckCd, 0, 24 * 5)
+        .Widget("重设冷却时间", (x) =>
         {
             if(ImGuiEx.Button(x, C.FCChestGilCheckTimes.Count > 0)) C.FCChestGilCheckTimes.Clear();
         })
         .Unindent()
-        .Checkbox("Shutdown the game after all deployables have been processed", () => ref C.ShutdownOnSubExhaustion)
+        .Checkbox("处理完所有远征探险后关闭游戏", () => ref C.ShutdownOnSubExhaustion)
         .Indent()
-        .SliderFloat(150f, "Don't shutdown if there are deployables that return within this amount of hours", () => ref C.HoursForShutdown, 0f, 10f)
+        .SliderFloat(150f, "如果有远征探险将在此小时内返回，则不关闭游戏", () => ref C.HoursForShutdown, 0f, 10f)
         .Widget(() =>
         {
             ImGuiEx.HelpMarker($"""
@@ -34,23 +34,23 @@ public class MultiModeDeployables : NeoUIEntry
                 """);
         })
         .Unindent()
-        .TextWrapped("Auto-buy Ceruleum Tanks after entering Workshop:")
+        .TextWrapped("进入工房后自动购买青磷水：")
         .Indent()
         .Widget(() =>
         {
             if(Data != null)
             {
-                ImGui.Checkbox($"Enable on {Data.NameWithWorldCensored}", ref Data.AutoFuelPurchase);
+                ImGui.Checkbox($"在 {Data.NameWithWorldCensored} 上启用", ref Data.AutoFuelPurchase);
             }
-            ImGuiEx.TextWrapped($"In order to enable/disable fuel purchase for other characters, navigate to Functions, Exclusions, Order section.");
+            ImGuiEx.TextWrapped($"若要启用/禁用其他角色的燃料购买，请前往「功能、排除与排序」区块。");
         })
-        .InputInt(150f, "Tanks remaining to trigger purchase", () => ref C.AutoFuelPurchaseLow.ValidateRange(100, 99999))
-        .InputInt(150f, "Buy until this amount in inventory", () => ref C.AutoFuelPurchaseMax)
-        .Checkbox("Only buy when workstation is unlocked", () => ref C.AutoFuelPurchaseOnlyWsUnlocked)
+        .InputInt(150f, "触发购买的剩余青磷水数量", () => ref C.AutoFuelPurchaseLow.ValidateRange(100, 99999))
+        .InputInt(150f, "购买至背包内达到此数量", () => ref C.AutoFuelPurchaseMax)
+        .Checkbox("仅在工作站解锁时进行购买", () => ref C.AutoFuelPurchaseOnlyWsUnlocked)
         .Unindent()
-        .Checkbox("Exit the game upon deployable completion", () => ref C.ExitOnSubCompletion, "Important: when activated, your multi mode will be set to do deployables only, no retainers.")
+        .Checkbox("部属完成后退出游戏", () => ref C.ExitOnSubCompletion, "重要提示：启用后，多角色模式将仅处理远征探险，不处理雇员。")
         .Indent()
-        .InputInt(150f, "Maximum time to wait for sub return, minutes", () => ref C.ExitOnSubCompletionTime)
+        .InputInt(150f, "等待潜水艇返回的最长时间（分钟）", () => ref C.ExitOnSubCompletionTime)
         .Unindent()
         ;
 }

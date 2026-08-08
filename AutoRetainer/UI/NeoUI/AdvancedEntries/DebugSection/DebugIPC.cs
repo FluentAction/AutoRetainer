@@ -10,13 +10,13 @@ internal unsafe class DebugIPC : DebugSectionBase
     public override void Draw()
     {
         ImGuiEx.Text($"GetClosestRetainerVentureSecondsRemaining {S.EzIPCManager.IPC_PluginState.GetClosestRetainerVentureSecondsRemaining(Player.CID)}");
-        ImGui.Checkbox($"API Test", ref ApiTest.Enabled);
+        ImGui.Checkbox($"API 测试", ref ApiTest.Enabled);
         ImGuiEx.Text($"IPC suppressed: {Svc.PluginInterface.GetIpcSubscriber<bool>("AutoRetainer.GetSuppressed").InvokeFunc()}");
-        if(ImGui.Button($"Suppress = true"))
+        if(ImGui.Button($"抑制 = 开启"))
         {
             Svc.PluginInterface.GetIpcSubscriber<bool, object>("AutoRetainer.SetSuppressed").InvokeAction(true);
         }
-        if(ImGui.Button($"Suppress = false"))
+        if(ImGui.Button($"抑制 = 关闭"))
         {
             Svc.PluginInterface.GetIpcSubscriber<bool, object>("AutoRetainer.SetSuppressed").InvokeAction(false);
         }

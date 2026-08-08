@@ -257,7 +257,7 @@ public static unsafe class Utils
     {
         if(!Utils.IsLifestreamInstalled())
         {
-            ImGuiEx.TextWrapped(EColor.RedBright, $"Lifestream plugin is not installed or not enabled. You have to install and enable it in order for {function} to work. Click here if you would like to open an instruction on how to do so.");
+            ImGuiEx.TextWrapped(EColor.RedBright, $"Lifestream 插件未安装或未启用。你必须安装并启用它，{function} 才能正常工作。如需查看操作说明，请点击此处。");
             if(ImGuiEx.HoveredAndClicked())
             {
                 ShellStart("https://github.com/NightmareXIV/Lifestream/?tab=readme-ov-file#installation");
@@ -685,13 +685,13 @@ public static unsafe class Utils
             {
                 if(imPlan.IMProtectList.Contains(slot->ItemId))
                 {
-                    DuoLog.Warning($"Requested discard of slot {type}[{slotIndex}], item {ExcelItemHelper.GetName(expectedItem)}, is protected, can not discard");
+                    DuoLog.Warning($"请求丢弃栏位 {type}[{slotIndex}] 中的物品 {ExcelItemHelper.GetName(expectedItem)} 受保护，无法丢弃");
                 }
                 else
                 {
                     if(imPlan.IMDry)
                     {
-                        DuoLog.Warning($"Would discard {(nint)slot:X} {ExcelItemHelper.GetName(slot->ItemId, true)} x{slot->Quantity}, {type}[{slotIndex}]");
+                        DuoLog.Warning($"将丢弃 {(nint)slot:X} {ExcelItemHelper.GetName(slot->ItemId, true)} x{slot->Quantity}，{type}[{slotIndex}]");
                     }
                     else
                     {
@@ -701,7 +701,7 @@ public static unsafe class Utils
             }
             else
             {
-                DuoLog.Warning($"Requested discard of slot {type}[{slotIndex}], expected item {ExcelItemHelper.GetName(expectedItem)}, contained {slotIndex}, can not discard");
+                DuoLog.Warning($"请求丢弃栏位 {type}[{slotIndex}]，预期物品 {ExcelItemHelper.GetName(expectedItem)}，实际为 {slotIndex}，无法丢弃");
             }
         }
     }
