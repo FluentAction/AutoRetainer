@@ -1,11 +1,11 @@
-﻿{
+{
   "Author": "NightmareXIV, kawaii",
   "Name": "AutoRetainer (自动雇员)",
   "InternalName": "AutoRetainer",
   "Punchline": "躺在床上就能收取并指派你的雇员冒险委托。",
   "Description": "躺在床上就能收取并指派你的雇员冒险委托。\n\n主要功能：\n\t- 一键指派/重新指派雇员冒险委托，自动处理繁琐的确认弹窗\n\t- 一键部署远征探险（飞空艇/潜水艇）\n\t- 创建出售列表，自动清理垃圾物品\n\t- 创建存放列表，将贵重物品存入雇员以节省背包空间",
   "ApplicableVersion": "any",
-  "RepoUrl": "https://github.com/PunishXIV/AutoRetainer",
+  "RepoUrl": "https://github.com/FluentAction/AutoRetainer",
   "DalamudApiLevel": 15,
   "LoadPriority": 0,
   "IconUrl": "https://s3.puni.sh/media/plugin/24/icon-drb6aywk5m9.png"
